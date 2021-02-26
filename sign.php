@@ -1,6 +1,5 @@
 <?php
-session_start();
-include 'config.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -14,30 +13,37 @@ include 'config.php';
 </head>
 
 <?php   
+    include 'config.php';
     if(isset($_POST['login'])){
         $login = $_POST['user'];
         $pass = $_POST['password'];
-        $qry = "SELECT user_name, email, password, admin FROM users";
+        $qry = "SELECT name, surname, username, email, password, role FROM users";
         $res = mysqli_query($conn, $qry);
 
-        while($row=mysqli_fetch_array($res)){
-            $username = $row['user_name'];
+        while($row = mysqli_fetch_array($res)){
+            //$name = $row['name'];
+            //$surname = $row['surname'];
+            $username = $row['username'];
             $email = $row['email'];
             $password = $row['password'];
             $role = $row['role'];
-            if($login == $row['user_name'] or $login == $row['email']){
+            if($login == $row['username'] or $login == $row['email']){
                 if($pass == $row['password']){
+                    session_start();
+
+                    $_SESSION['name'] = $row['name'];
+                    $_SESSION['surname'] = $row['surname'];
+                    $_SESSION['email'] = $row['email'];
+                    $_SESSION['username'] = $row['username'];
+
                     if($role == "admin"){
                         header("location:home-admin.php");
+                    }else if($role == "customer"){
+                        header("location:home-customer.php");
                     }else{
-                        header("location:home-user.php");
-                    }
-                    session_start();
-                    $_SESSION['name'] = $row['name'];
-                    $_SESSION['admin'] = $row['role'];
-                    $_SESSION['username'] = $row['user_name'];
-                    $_SESSION['isLogged'] = true;
-                 }
+                        header("location:home-salesman.php");
+                    }  
+                }
             }else{
                 //
         }
@@ -47,7 +53,7 @@ include 'config.php';
 ?>
 <body>
     <form action="sign.php" method="post">
-      <p class="start">Sing-In</p>
+      <p class="start">Sign In</p>
       <div class="form-group">
            <label for="user">Email or username:</label>
            <input type="text" id="user" placeholder="Enter email or username" name="user" required><br>

@@ -63,12 +63,16 @@
 
             $allowed = true;
             
+            if(empty(trim($name)) || empty(trim($surname)) || empty(trim($username))){
+                $msg = "Space can't be an user information!";
+                $allowed = false;
+            }
 
             if(strlen($password) < 6){
                 $msg = "Password too weak! Must be between 6 and 30 characters";
                 $allowed = false;
             }else if(strlen($password) > 31){
-                $msg = "Password too weak! Must be between 6 and 30 characters";
+                $msg = "Password too strong! Must be between 6 and 30 characters";
                 $allowed = false;
             }
 
