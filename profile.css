@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
+.user-profile {
+    margin-top: 200px;
+}
+
+.picture {
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translate(-60px, -20px);
+}

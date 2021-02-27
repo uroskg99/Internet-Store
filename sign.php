@@ -31,9 +31,6 @@
                 if($pass == $row['password']){
                     session_start();
 
-                    $_SESSION['name'] = $row['name'];
-                    $_SESSION['surname'] = $row['surname'];
-                    $_SESSION['email'] = $row['email'];
                     $_SESSION['username'] = $row['username'];
 
                     if($role == "admin"){
