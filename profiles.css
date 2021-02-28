@@ -12,3 +12,7 @@
     left: 50%;
     transform: translate(-60px, -20px);
 }
+
+.edit-button {
+    margin-left: 30px;
+}
