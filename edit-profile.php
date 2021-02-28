@@ -80,15 +80,39 @@ if(isset($_POST['update_pass'])){
     $new_pass = $_POST['new_password'];
     $new_pass2 = $_POST['new_password2'];
 
-    if($old_pass == $password){
+    if($old_pass != $password){
+        $msg = "Please, enter the right current password!";
+    }else if(strlen($new_pass) < 6){
+        $msg = "Password too weak! Must be between 6 and 30 characters";
+    }else if(strlen($new_pass) > 31){
+        $msg = "Password too strong! Must be between 6 and 30 characters";
+    }else if($new_pass != $new_pass2){
+        $msg = "Please, repeat the same password!";
+    }else{
         $sql = "UPDATE users SET password='$new_pass' WHERE username='$username_prim'";
         $res = mysqli_query($conn, $sql);
 
-    
+        if($res){
+            header("location:profile.php");
+        }
     }
-
 }
 
+if(isset($_POST['update_profilepic'])){
+    $picture = $_FILES['picture']['name'];
+    $target = "profile-pics/".basename($picture);
+
+    if(!move_uploaded_file($_FILES['picture']['tmp_name'], $target)){
+        echo "ERROR";
+    }
+
+    $sql = "UPDATE users SET profilepic = '$picture' WHERE username='$username_prim'";
+    $res = mysqli_query($conn, $sql);
+
+    if($res){
+        header("location:profile.php");
+    }
+}
 
 ?>
 <div class="container-fluid">
@@ -135,17 +159,20 @@ if(isset($_POST['update_pass'])){
     </form>
     <div class="right-side">
         <img src="profile-pics/<?php echo $profilepic; ?>" width="120px" height="120px">
-        <button class="btn btn-primary">Upload another picture</button>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <input type="file" name="picture"><br>
+            <button class="btn btn-primary" name="update_profilepic">Update profile picture</button>
+        </form>
         <div class="password">
-            <div class="hide" id="pass">
-                <p>Current password</p><input type="password" name="old_password">
-                <p>New password</p><input type="password" name="new_password">
-                <p>Repeat new password</p><input type="password" name="new_password2"><br>
-            </div>
-            <button class="btn btn-primary pass-button" id="pass-button">Change password</button><br>
             <form action="" method="POST" enctype="multipart/form-data">
-                <button class="btn btn-primary change-pass hide" id="change-pass" name="update_pass" onclick='return checkEdit()'>Update password</button>
+                <div class="hide" id="pass">
+                    <p>Current password</p><input type="password" name="old_password">
+                    <p>New password</p><input type="password" name="new_password">
+                    <p>Repeat new password</p><input type="password" name="new_password2"><br>
+                </div>
+                <button class="btn btn-primary change-pass hide" id="change-pass" name="update_pass" onclick='return checkEdit()'>Update password</button><br>
             </form>
+            <button class="btn btn-primary pass-button" id="pass-button">Change password</button><br>
             <?php echo $msg; ?>
         </div>
     </div>

@@ -55,6 +55,7 @@ while($row = mysqli_fetch_assoc($res)){
         </li>
     </ul>
 </nav>
+<br>
 
 </body>
 </html>
