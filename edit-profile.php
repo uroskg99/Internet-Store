@@ -116,7 +116,7 @@ if(isset($_POST['update_profilepic'])){
 
 ?>
 <div class="container-fluid">
-    <nav class="navbar navbar-expand-sm fixed-top">
+    <nav class="navbar navbar-expand-sm">
         <ul class="navbar-nav">
             <li class="nav-item">
             <a class="nav-link" href="home-customer.php">Home Page</a>
