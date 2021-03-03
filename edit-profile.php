@@ -122,9 +122,6 @@ if(isset($_POST['update_profilepic'])){
             <a class="nav-link" href="home-customer.php">Home Page</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">Link 2</a>
-            </li>
-            <li class="nav-item">
                 <h5>You are logged in as <?php echo $_SESSION['username']; ?>
             </li>
             <li class="nav-item dropdown">

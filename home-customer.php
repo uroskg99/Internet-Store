@@ -13,7 +13,7 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="home-customers.css">
+    <link rel="stylesheet" href="home-customerc.css">
 </head>
 <body>
 
@@ -35,9 +35,6 @@ while($row = mysqli_fetch_assoc($res)){
         <ul class="navbar-nav">
             <li class="nav-item">
             <a class="nav-link" href="home-customer.php">Home Page</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Link 2</a>
             </li>
             <li class="nav-item">
                 <h5>You are logged in as <?php echo $_SESSION['username']; ?>
@@ -178,26 +175,32 @@ while($row = mysqli_fetch_assoc($res)){
         $product_qry = "SELECT * FROM products";
         $product_res = mysqli_query($conn, $product_qry);
         $res = mysqli_num_rows($product_res);
-
     ?>
 
     <div class="col-md-8">
     <?php 
     
     if($res == 0){
-        echo "There are no results";
+        echo "Nema rezultata";
     }else{
         while($product_data = mysqli_fetch_assoc($product_res)){
+            if(strlen($product_data['customer']) == 0){
+                
+                $product_name = $product_data['name'];
 
-    ?>
-
-        <div class="container product">
-            <img src="profile-pics/prof.png" width="100px" height="100px" class="product-pic">
-            <p class="left"><?php echo $product_data['name']; ?><span class="price">Cena: <?php echo $product_data['price']; ?></span></p>
-            <p class="right"><?php echo $product_data['location']; ?><span class="type2"><?php echo $product_data['type']; ?></span></p>
-        </div>
-
-    <?php 
+                $product_pic = "SELECT picture FROM products_gallery WHERE product = '$product_name' ";
+                $prod_res = mysqli_query($conn, $product_pic);
+                $prod_i = mysqli_fetch_array($prod_res);
+                $prod_final = $prod_i['picture'];
+        ?>
+        <?php echo "<a href='product-page.php?name=".$product_data['name']."' style='text-decoration-color:white'>"; ?>
+            <div class="container product">
+                <img src="products-pics/<?php echo $prod_final; ?>" width="" height="100%" class="product-pic">
+                <p class="left"><?php echo $product_data['name']; ?><span class="price">Cena: <?php echo $product_data['price']; ?></span></p>
+                <p class="right"><?php echo $product_data['location']; ?><span class="type2"><?php echo $product_data['type']; ?></span></p>
+            </div>
+        <?php echo "</a>"; 
+            }
         }
     }
     ?>
