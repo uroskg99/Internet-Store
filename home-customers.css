@@ -58,10 +58,6 @@ p {
     margin-right: 20px;
 }
 
-.greeny {
-    font-weight: bold;
-}
-
 .type {
     margin-left: 8px;
 }
@@ -69,4 +65,15 @@ p {
 .type2 {
     font-weight: bold;
     margin-left: 20px;
+}
+
+.simple {
+    background-color: white;
+    border: none;
+    margin-left: 10px;
+    color: rgb(46, 46, 46);
+}
+
+.simple:focus {
+    outline: none;
 }

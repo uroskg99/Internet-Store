@@ -9,11 +9,13 @@ session_start();
 <html>
 <head>
     <title>Internet Store</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="home-customerc.css">
+    <link rel="stylesheet" href="home-customers.css">
 </head>
 <body>
 
@@ -57,122 +59,169 @@ while($row = mysqli_fetch_assoc($res)){
 <div class="row">
     <div class="col-md-2 left-side">
         <ul class="list-group list-group-flush">
+        <form action="" method="POST">
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Antikviteti</p>
+                <button class="simple" name="antc">Antikviteti</button>
             </li>
             </a> 
             <a href="#">       
             <li class="list-group-item list-group-item-action">
-                <p class="type">Audio</p>
+                <button class="simple" name="audio">Audio</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Automobili</p>
+            <button class="simple" name="auto">Automobili</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Bela tehnika</p>
+            <button class="simple" name="bteh">Bela tehnika</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Bicikli</p>
+                <button class="simple" name="bicikli">Bicikli</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Domaća hrana</p>
+                <button class="simple" name="domhrana">Domaća hrana</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Dvorište i bašta</p>
+            <button class="simple" name="dvoriste">Dvorište i bašta</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Elektronika</p>
+            <button class="simple" name="elek">Elektronika</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Igračke i igre</p>
+                <button class="simple" name="igracke">Igračke i igre</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Knjige</p>
+                <button class="simple" name="knjige">Knjige</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Kompjuteri</p>
+                <button class="simple" name="komp">Kompjuteri</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Konzole i igrice</p>
+                <button class="simple" name="konz">Konzole i igrice</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Kućni ljubimci</p>
+                <button class="simple" name="ljubimci">Kućni ljubimci</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Mobilni telefoni</p>
+                <button class="simple" name="mobilni">Mobilni telefoni</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Motocikli</p>
+                <button class="simple" name="motocikli">Motocikli</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Muzika i instrumenti</p>
+                <button class="simple" name="muzika">Muzika i instrumenti</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Nakit, satovi</p>
+                <button class="simple" name="nakit">Nakit, satovi</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Nameštaj</p>
+                <button class="simple" name="namestaj">Nameštaj</button>  
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Nekretnine</p>
+                <button class="simple" name="nekretnine">Nekretnine</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Odeća</p>
+                <button class="simple" name="odeca">Odeća</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">Sport</p>
+                <button class="simple" name="sport">Sport</button>
             </li>
             </a>
             <a href="#">
             <li class="list-group-item list-group-item-action">
-                <p class="type">TV i video</p>
+                <button class="simple" name="tv">TV i video</button>
             </li>
             </a>
+        </form>
         </ul>
     </div>
 
     <?php 
-    
-        $product_qry = "SELECT * FROM products";
+        if(isset($_POST['antc'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'antikviteti' ";
+        }else if(isset($_POST['audio'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'audio' ORDER BY id DESC ";
+        }else if(isset($_POST['auto'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'automobili' ORDER BY id DESC ";
+        }else if(isset($_POST['bteh'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'bela tehnika' ORDER BY id DESC ";
+        }else if(isset($_POST['bicikli'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'Bicikli' ORDER BY id DESC ";
+        }else if(isset($_POST['domhrana'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'domaca hrana' ORDER BY id DESC ";
+        }else if(isset($_POST['dvoriste'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'dvoriste i basta' ORDER BY id DESC ";
+        }else if(isset($_POST['elek'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'elektronika' ORDER BY id DESC ";
+        }else if(isset($_POST['igracke'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'igracke i igre' ORDER BY id DESC ";
+        }else if(isset($_POST['knjige'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'knjige' ORDER BY id DESC ";
+        }else if(isset($_POST['komp'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'kompjuteri' ORDER BY id DESC ";
+        }else if(isset($_POST['konz'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'konzole i igrice' ORDER BY id DESC ";
+        }else if(isset($_POST['ljubimci'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'kucni ljubimci' ORDER BY id DESC ";
+        }else if(isset($_POST['mobilni'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'mobilni telefoni' ORDER BY id DESC ";
+        }else if(isset($_POST['motocikli'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'motocikli' ORDER BY id DESC ";
+        }else if(isset($_POST['muzika'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'muzika i instrumenti' ORDER BY id DESC ";
+        }else if(isset($_POST['nakit'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'nakit i satovi' ORDER BY id DESC ";
+        }else if(isset($_POST['namestaj'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'namestaj' ORDER BY id DESC ";
+        }else if(isset($_POST['nekretnine'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'nekretnine' ORDER BY id DESC ";
+        }else if(isset($_POST['odeca'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'odeca' ORDER BY id DESC ";
+        }else if(isset($_POST['sport'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'sport' ORDER BY id DESC ";
+        }else if(isset($_POST['tv'])){
+            $product_qry = "SELECT * FROM products WHERE type LIKE 'tv i video' ORDER BY id DESC ";
+        }else{
+            $product_qry = "SELECT * FROM products ORDER BY id DESC";
+        }
         $product_res = mysqli_query($conn, $product_qry);
         $res = mysqli_num_rows($product_res);
     ?>
@@ -207,5 +256,8 @@ while($row = mysqli_fetch_assoc($res)){
     </div>
 </div>
 
+<script type="text/javascript">
+    
+</script>
 </body>
 </html>
