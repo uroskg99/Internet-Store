@@ -15,7 +15,7 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="home-customers.css">
+    <link rel="stylesheet" href="home-customer.css">
 </head>
 <body>
 
@@ -60,116 +60,181 @@ while($row = mysqli_fetch_assoc($res)){
     <div class="col-md-2 left-side">
         <ul class="list-group list-group-flush">
         <form action="" method="POST">
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="antc">Antikviteti</button>
-            </li>
-            </a> 
-            <a href="#">       
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="audio">Audio</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-            <button class="simple" name="auto">Automobili</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-            <button class="simple" name="bteh">Bela tehnika</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="bicikli">Bicikli</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="domhrana">Domaća hrana</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-            <button class="simple" name="dvoriste">Dvorište i bašta</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-            <button class="simple" name="elek">Elektronika</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="igracke">Igračke i igre</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="knjige">Knjige</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="komp">Kompjuteri</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="konz">Konzole i igrice</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="ljubimci">Kućni ljubimci</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="mobilni">Mobilni telefoni</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="motocikli">Motocikli</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="muzika">Muzika i instrumenti</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="nakit">Nakit, satovi</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="namestaj">Nameštaj</button>  
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="nekretnine">Nekretnine</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="odeca">Odeća</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="sport">Sport</button>
-            </li>
-            </a>
-            <a href="#">
-            <li class="list-group-item list-group-item-action">
-                <button class="simple" name="tv">TV i video</button>
-            </li>
-            </a>
+            <button class="simple" name="antc">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Antikviteti</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="audio">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Audio</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="auto">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Automobili</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="bteh">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Bela tehnika</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="bicikli">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Bicikli</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="domhrana">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Domaća hrana</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="dvoriste">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Dvorište i bašta</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="elek">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Elektronika</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="igracke">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Igračke i igre</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="knjige">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Knjige</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="komp">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Kompjuteri</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="konz">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Konzole i igrice</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="ljubimci">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Kućni ljubimci</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="mobilni">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Mobilni telefoni</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="motocikli">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Motocikli</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="muzika">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Muzika i instrumenti</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="nakit">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Nakit, satovi</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="namestaj">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Nameštaj</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="nekretnine">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Nekretnine</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="odeca">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Odeća</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="sport">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>Sport</p>
+                </li>
+                </a> 
+            </button>
+
+            <button class="simple" name="tv">
+                <a href="#">
+                <li class="list-group-item list-group-item-action">
+                    <p>TV i Video</p>
+                </li>
+                </a> 
+            </button>
         </form>
         </ul>
     </div>
