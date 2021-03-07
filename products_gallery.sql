@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2021 at 06:43 PM
+-- Generation Time: Mar 07, 2021 at 09:05 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -41,7 +41,11 @@ INSERT INTO `products_gallery` (`id`, `product`, `picture`) VALUES
 (1, 'Bicikla Capriolo', 'capriolo.jpg'),
 (2, 'Samsung Televizor', 'samsung-tv.jpg'),
 (3, 'Samsung Televizor', 'samsung-tv2.jpg'),
-(4, 'Samsung A8', 'samsung-a8.jpg');
+(4, 'Samsung A8', 'samsung-a8.jpg'),
+(5, 'Sir od koze 5kg', 'sir-koza.jpg'),
+(6, 'Televizor TESLA full hd', 'tesla-tv.jpg'),
+(7, 'Hummel dres za rukomet', 'hummel-dres.jpg'),
+(8, 'Elektricni trotinet', 'elek-trotinet.jpg');
 
 --
 -- Indexes for dumped tables
@@ -61,7 +65,7 @@ ALTER TABLE `products_gallery`
 -- AUTO_INCREMENT for table `products_gallery`
 --
 ALTER TABLE `products_gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

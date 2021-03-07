@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2021 at 05:31 PM
+-- Generation Time: Mar 07, 2021 at 09:05 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -45,8 +45,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `surname`, `username`, `email`, `password`, `role`, `profilepic`) VALUES
 (1, 'Uros', 'Stanojkov', 'uros99', 'stanojkovu@gmail.com', '123456', 'admin', 'blank-profile-pic.png'),
 (2, 'Aleksandar', 'Vucic', 'akiveliki', 'akiveliki@serbia.net', 'vucicuseceru', 'salesperson', 'blank-profile-pic.png'),
-(3, 'Nemanja', 'Ciric', 'nciric99', 'nciric44222@gmail.com', 'dubravka', 'customer', 'prof.png'),
-(4, 'Jorgan', 'Milanovic', 'jorgan99', 'jorgan99@gmail.com', 'jorgan999', 'customer', 'blank-profile-pic.png');
+(3, 'Nemanja', 'Bogdanovic', 'nciric99', 'nciric44222@gmail.com', 'dubravka', 'customer', 'prof.png'),
+(4, 'Jorgan', 'Hendikepovic', 'jorganxd', 'jorgan99@gmail.com', 'macka123', 'customer', 'Profilna.jpg'),
+(5, 'staki', 'stanojkov', 'Å¾arko', 'staki@gmail.com', 'staki123', 'customer', 'blank-profile-pic.png');
 
 --
 -- Indexes for dumped tables
@@ -66,7 +67,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

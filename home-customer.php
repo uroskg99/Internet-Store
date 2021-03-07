@@ -15,7 +15,7 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="home-customer.css">
+    <link rel="stylesheet" href="home-customers.css">
 </head>
 <body>
 
@@ -33,11 +33,15 @@ while($row = mysqli_fetch_assoc($res)){
 
 ?>
 <div class="container-fluid navigation">
+    <div class="container search">
+        <form action="" method="GET">
+            <input type="text" class="search-input" placeholder="Pretraži proizvode" name="input_search">
+            <button class="search-button" name="name_search">Pretraži</button>
+        </form>
+    </div>
+
     <nav class="navbar navbar-expand-sm">
         <ul class="navbar-nav">
-            <li class="nav-item">
-            <a class="nav-link" href="home-customer.php">Home Page</a>
-            </li>
             <li class="nav-item">
                 <h5>You are logged in as <?php echo $_SESSION['username']; ?>
             </li>
@@ -51,6 +55,9 @@ while($row = mysqli_fetch_assoc($res)){
                     <a class="dropdown-item" href="#">My orders</a>
                     <a class="dropdown-item" href="logout.php">Logout</a>
                 </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="home-customer.php">Home Page</a>
             </li>
         </ul>
     </nav>
@@ -287,6 +294,12 @@ while($row = mysqli_fetch_assoc($res)){
         }else{
             $product_qry = "SELECT * FROM products ORDER BY id DESC";
         }
+
+        if(isset($_GET['name_search'])){
+            $search = mysqli_real_escape_string($conn, $_GET['input_search']);
+            $product_qry = "SELECT * FROM products WHERE name LIKE '%$search%' ORDER BY id DESC";
+        }
+
         $product_res = mysqli_query($conn, $product_qry);
         $res = mysqli_num_rows($product_res);
     ?>
@@ -310,7 +323,7 @@ while($row = mysqli_fetch_assoc($res)){
         <?php echo "<a href='product-page.php?name=".$product_data['name']."' style='text-decoration-color:white'>"; ?>
             <div class="container product">
                 <img src="products-pics/<?php echo $prod_final; ?>" width="" height="100%" class="product-pic">
-                <p class="left"><?php echo $product_data['name']; ?><span class="price">Cena: <?php echo $product_data['price']; ?></span></p>
+                <p class="left"><?php echo $product_data['name']; ?><span class="price">Cena: <?php echo $product_data['price'].$product_data['currency']; ?></span></p>
                 <p class="right"><?php echo $product_data['location']; ?><span class="type2"><?php echo $product_data['type']; ?></span></p>
             </div>
         <?php echo "</a>"; 

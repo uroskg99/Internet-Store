@@ -8,6 +8,39 @@
     height: 60px;
 }
 
+.navbar {
+    float: right;
+}
+
+.search {
+    width: 25%;
+    float: left;
+    margin-top: 10px;
+}
+
+.search-input {
+    height: 35px;
+}
+
+.search-button {
+    background-color: #58b7eb;
+    border-radius: 4px;
+    height: 35px;
+    width: 90px;
+    font-style: bolder;
+    border: none;
+    color: white;
+    font-weight: 600;
+}
+
+.search-button:hover {
+    background-color: #34a8e7;
+}
+
+.row {
+    margin-top: 40px;
+}
+
 .left-side {
     width: 200px;
 }
