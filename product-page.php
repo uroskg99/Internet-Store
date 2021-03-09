@@ -53,19 +53,48 @@ while($row = mysqli_fetch_assoc($res)){
         </ul>
     </nav>
 <br>
-</div>
-
 <?php 
 
-$prod_name = mysqli_real_escape_string($conn, $_GET['name']);
-/*
-predstaviti sve detalje proizvoda
+$name_search = mysqli_real_escape_string($conn, $_GET['name']);
+$sql = "SELECT * FROM products WHERE name='$name_search'";
+$result = mysqli_query($conn, $sql);
 
-opcija za customer-a da kupi proizvod, klikom na to dugme ga salje u njegove porudzbine i tu dodaje ovaj proizvod,
-takodje u bazi podataka u tabeli products, polje 'kupac' upisuje se username kupca
+while($row = mysqli_fetch_assoc($result)){   
 
-kupljeni proizvod ne bi trebalo da bude predstavljen kao dostupan proizvod za druge kupce
-*/
 ?>
+
+<div class="container all-info">
+    <div class="product_name">
+        <h3><?php echo $row['name']; ?></h3>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+           <div class="product_price"><?= "Cena: " . $row['price'] ." " . $row['currency']?></div>
+           <div class="product_type"><?= "Tip: " . $row['type']?></div>
+           <div class="product_quantity"><?= "Raspoloživo: " . $row['quantity']?></div>
+           <div class="product_delivery"><?= "Način dostave: " . $row['delievery']?></div>
+        </div>
+
+        <div class="col-sm-6">
+           <div class="product_salesman"><?= $row['salesman']?></div>
+           <div class="product_location"><?= $row['location']?></div>
+        </div>
+   </div>
+   <br>
+
+   <div class="product_description"><?= $row['description'] ?></div>
+
+   <div class="product_image_gallery">
+   
+   </div>
+
+</div>
+
+<?php
+}
+?>
+
+</div>
 </body>
 </html>
