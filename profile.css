@@ -1,4 +1,6 @@
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -10,9 +12,14 @@
     position: relative;
     top: 0;
     left: 50%;
-    transform: translate(-60px, -20px);
+    transform: translate(-50%, -50%);
 }
 
 .edit-button {
     margin-left: 30px;
+}
+
+.navbar {
+    float: right;
+    height: 60px;
 }
