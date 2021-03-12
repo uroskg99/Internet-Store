@@ -30,36 +30,23 @@ while($row = mysqli_fetch_assoc($res)){
 }
 ?>
 
-<div class="container-fluid navigation">
-    <div class="container search">
-        <form action="" method="GET">
-            <input type="text" class="search-input" placeholder="Pretraži proizvode" name="input_search">
-            <button class="search-button" name="name_search">Pretraži</button>
-        </form>
+<div class="row">
+    <div class="col-md-12 column">
+        <a href="home-customer.php">Početna stranica</a>
+        <div class="right-div">
+            <h5>You are logged in as <?php echo $_SESSION['username']; ?>
+            <a class="nav-link dropdown-toggle right-a" href="#" id="navbardrop" data-toggle="dropdown">
+                <img src="profile-pics/<?php echo $profilepic; ?>" width="40px" height="40px">
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="profile.php">View Profile</a>
+                <a class="dropdown-item" href="edit-profile.php">Edit Profile</a>
+                <a class="dropdown-item" href="orders.php">My orders</a>
+                <a class="dropdown-item" href="logout.php">Logout</a>
+            </div>
+        </div>
     </div>
-
-    <nav class="navbar navbar-expand-sm">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <h5>You are logged in as <?php echo $_SESSION['username']; ?>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                    <img src="profile-pics/<?php echo $profilepic; ?>" width="40px" height="40px">
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="profile.php">View Profile</a>
-                    <a class="dropdown-item" href="edit-profile.php">Edit Profile</a>
-                    <a class="dropdown-item" href="orders.php">My orders</a>
-                    <a class="dropdown-item" href="logout.php">Logout</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="home-customer.php">Home Page</a>
-            </li>
-        </ul>
-    </nav>
-<br>
+</div>
 </div>
 
 
