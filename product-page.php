@@ -80,21 +80,31 @@ while($row = mysqli_fetch_assoc($res)){
         <br>
         <p><?php echo $description . ' Lokacija je: ' . $location; ?></p>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 Vlasnik ovog proizvoda je: <?php echo $salesman; ?>
-            </div>
-            <div class="col-sm-6">
-                Način isporuke: <?php echo $delievery; ?>
             </div>
         </div>
     </div>
     <?php
 
 
-if(isset($_POST['order'])){
+if(isset($_POST['order-online'])){
+    $online = 'Online';
     $customer_name = $_SESSION['username'];
 
-    $product_sql = "UPDATE products SET customer = '$customer_name' WHERE name='$name' ";
+    $product_sql = "UPDATE products SET `customer` = '$customer_name', `delievery` = '$online' WHERE name='$name' ";
+    $result_order = mysqli_query($conn, $product_sql);
+
+    if($result_order){
+        header("location:orders.php");
+    }
+}
+
+if(isset($_POST['basic-order'])){
+    $pouzecu = 'Po uzeću';
+    $customer_name = $_SESSION['username'];
+
+    $product_sql = "UPDATE products SET customer = '$customer_name', `delievery` = '$pouzecu' WHERE name='$name' ";
     $result_order = mysqli_query($conn, $product_sql);
 
     if($result_order){
@@ -105,8 +115,65 @@ if(isset($_POST['order'])){
 <?php
 
 if(strlen($customer) == 0){
-    echo '<form action="" method="POST">';
-    echo '<button type="submit" class="btn btn-success" name="order" onclick=return checkOrder()>Naruči</button>';
+    ?>
+
+    <div class="container">
+        <div class="row">
+        
+            <div class="col-md-5 online-payment">
+            <form action="" method="POST">
+                <h3>Plati online</h3>
+                <div class="card-item">
+                    <label class="label">Vlasnik kartice:</label>
+                    <input type="text" class="input" placeholder="Vlasnik kartice" required> 
+                </div>
+                <div class="card-item">
+                    <label class="label">Broj kartice:</label>
+                    <input type="text" class="input" placeholder="Broj kartice" required> 
+                </div>
+                <div class="card-item">
+                    <label class="label">Datum isteka:</label>
+                    <input type="text" class="input" placeholder="00 / 00" required> 
+                </div>
+                <div class="card-item">
+                    <label class="label">CVC:</label>
+                    <input type="text" class="input" placeholder="0000" required> 
+                </div>   
+                <div class="card-item">
+                    <label class="label">Adresa isporuke:</label>
+                    <input type="text" class="input" placeholder="Kneza Miloša, 1" required> 
+                </div>         
+
+                <button type="submit" class="btn" name="order-online" onclick='return checkOrder()'>Online plaćanje</button>
+            </form>
+            </div>
+        
+           
+            <div class="col-md-5 basic-payment">
+            <form action="" method="POST"> 
+                <h3>Po uzeću</h3>
+                <div class="card-item">
+                    <label class="label">Ime i prezime:</label>
+                    <input type="text" class="input" placeholder="Ime i prezime" required> 
+                </div>
+                <div class="card-item">
+                    <label class="label">Broj telefona:</label>
+                    <input type="tel" class="input" placeholder="+381653001223" required> 
+                </div>
+                <div class="card-item">
+                    <label class="label">Adresa isporuke:</label>
+                    <input type="text" class="input" placeholder="Kneza Miloša, 1" required> 
+                </div>
+
+                <button type="submit" class="btn" name="basic-order" onclick='return checkOrder()'>Po uzeću</button>
+            </form>
+            </div>  
+        </div>
+    </div>
+
+
+
+    <?php
     echo '</form>';
 }else{
     echo '<p class="p-info">Već ste kupili ovaj proizvod</p>';

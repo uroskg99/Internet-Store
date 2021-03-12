@@ -32,38 +32,49 @@ while($row = mysqli_fetch_assoc($res)){
 }
 
 ?>
-<div class="container-fluid navigation">
-    <div class="container search">
-        <form action="" method="GET">
-            <input type="text" class="search-input" placeholder="Pretraži proizvode" name="input_search">
-            <button class="search-button" name="name_search">Pretraži</button>
-        </form>
+<div class="row">
+    <div class="col-md-12 column">
+        <a href="home-customer.php">Početna stranica</a>
+        <div class="right-div">
+            <h5>You are logged in as <?php echo $_SESSION['username']; ?>
+            <a class="nav-link dropdown-toggle right-a" href="#" id="navbardrop" data-toggle="dropdown">
+                <img src="profile-pics/<?php echo $profilepic; ?>" width="40px" height="40px">
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="profile.php">View Profile</a>
+                <a class="dropdown-item" href="edit-profile.php">Edit Profile</a>
+                <a class="dropdown-item" href="orders.php">My orders</a>
+                <a class="dropdown-item" href="logout.php">Logout</a>
+            </div>
+        </div>
     </div>
-
-    <nav class="navbar navbar-expand-sm">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <h5>You are logged in as <?php echo $_SESSION['username']; ?>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                    <img src="profile-pics/<?php echo $profilepic; ?>" width="40px" height="40px">
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="profile.php">View Profile</a>
-                    <a class="dropdown-item" href="edit-profile.php">Edit Profile</a>
-                    <a class="dropdown-item" href="orders.php">My orders</a>
-                    <a class="dropdown-item" href="logout.php">Logout</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="home-customer.php">Home Page</a>
-            </li>
-        </ul>
-    </nav>
-<br>
 </div>
 <div class="row">
+    <div class="col-md-6">
+        <div class="container search  center" style="width: 100%;">
+            <form action="" method="GET">
+                <input type="text" class="search-input" placeholder="Pretraži proizvode" name="input_search">
+                <button class="search-button" name="name_search">Pretraži</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="price-search center" style="width: 100%;">
+            <p>Sortiraj po ceni</p>
+            <form action="" method="GET"> 
+                <input type="radio" name="order" value="greater" checked>
+                <label for="greater">Od više ka nižoj</label><br>
+
+                <input type="radio" name="order" value="smaller">
+                <label for="smaller">Od niže ka višoj</label><br>
+
+                <button type="submit" class="search-button" name="price-search">Pretraži</button>
+            </form>
+        </div>
+    </div> 
+</div>
+
+<div class="row page-wrap">
     <div class="col-md-2 left-side">
         <ul class="list-group list-group-flush">
         <form action="" method="POST">
@@ -298,6 +309,17 @@ while($row = mysqli_fetch_assoc($res)){
         if(isset($_GET['name_search'])){
             $search = mysqli_real_escape_string($conn, $_GET['input_search']);
             $product_qry = "SELECT * FROM products WHERE name LIKE '%$search%' ORDER BY id DESC";
+        }
+
+        if(isset($_GET['price-search'])){
+            if(isset($_GET['order'])){
+                $order = $_GET['order'];
+                if($order == 'smaller'){
+                    $product_qry = "SELECT * FROM products ORDER BY `price`";
+                }else if($order == 'greater'){
+                    $product_qry = "SELECT * FROM products ORDER BY `price` DESC";
+                }
+            }
         }
 
         $product_res = mysqli_query($conn, $product_qry);
