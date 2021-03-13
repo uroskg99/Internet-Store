@@ -152,3 +152,17 @@ p {
     top: 0px;
     transform: translate(-50%, 0);
 }
+
+.row-column {
+    width: 90%;
+    margin: 0;
+    padding: 0;
+}
+
+.price-col {
+    max-width: 25%;
+}
+
+.row {
+    max-width: 90%;
+}

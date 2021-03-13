@@ -79,17 +79,26 @@ if($res_number == 0){
         $prod_final = $prod_i['picture'];
 ?>
 <div class="my-products">
-    <?php echo "<a href='product-page.php?name=".$row['name']."' style='text-decoration-color:white'>"; ?>
-        <div class="container product">
-            <img src="products-pics/<?php echo $prod_final; ?>" width="" height="100%" class="product-pic">
-            <p class="left"><?php echo $row['name']; ?><span class="price">Cena: <?php echo $row['price'].$row['currency']; ?></span></p>
-            <p class="right"><?php echo $row['location']; ?><span class="type2"><?php echo $row['type']; ?></span></p>
-        </div>
-    <?php echo "</a>"; 
+    <div class="container product">
+        <?php echo "<a href='product-page.php?name=".$row['name']."' style='text-decoration-color:white'>"; ?>
+        <img src="products-pics/<?php echo $prod_final; ?>" width="" height="100%" class="product-pic">
+        <p class="left"><?php echo $row['name']; ?><span class="price">Cena: <?php echo $row['price'].$row['currency']; ?></span></p>
+        <p class="right"><?php echo $row['location']; ?><span class="type2"><?php echo $row['type']; ?></span></p>
+        <?php echo "</a>"; ?>
+    </div>
+    <?php echo "<a href='remove-order.php?name=".$row['name']."' onclick='return checkdelete()'>"; ?>
+        <button class="delete-button">Otkaži</button>
+    <?php echo "</a>";
     }
 }
 ?>   
 </div>
 
+
+<script>
+    function checkdelete(){
+        return confirm('Da li ste sigurni da želite da otkažete porudžbinu?');
+    }
+</script>
 </body>
 </html>

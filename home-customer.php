@@ -32,7 +32,7 @@ while($row = mysqli_fetch_assoc($res)){
 }
 
 ?>
-<div class="row">
+<div class="row row-column">
     <div class="col-md-12 column">
         <a href="home-customer.php">Početna stranica</a>
         <div class="right-div">
@@ -58,7 +58,7 @@ while($row = mysqli_fetch_assoc($res)){
             </form>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 price-col">
         <div class="price-search center" style="width: 100%;">
             <p>Sortiraj po ceni</p>
             <form action="" method="GET"> 

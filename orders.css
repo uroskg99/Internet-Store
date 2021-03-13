@@ -63,3 +63,16 @@ a:hover {
     font-weight: bold;
     margin-left: 20px;
 }
+
+.delete-button {
+    background-color: #f74646;
+    margin-left: 30%;
+    width: 80px;
+    height: 30px;
+    border-radius: 3px;
+    border: none;
+}
+
+.delete-button:hover {
+    box-shadow: 3px 3px 2px #aaaaaa;
+}
