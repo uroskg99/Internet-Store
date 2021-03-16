@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.logo {
+    height: 95%;
+}
+
+a {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    top: 25vh;
+    width: 50%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+label {
+    font-weight: 500;
+    color: rgb(15, 87, 163);
+}
+
+.btn {
+    margin-top: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 50%;
+}

@@ -10,40 +10,47 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="register.css">
 </head>
 
 <body>
-<div class="container">
+<div class="container-fluid header">
+    <a href="#">
+        <img src="website-pics/logo.png" class="logo">
+    </a>
+</div>
+
+<div class="container-fluid">
     <form action="" method="POST">
         <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" required>
+            <label for="name">Ime:</label>
+            <input type="text" class="form-control" id="name" placeholder="Unesi ime" name="name" required>
         </div>
         <div class="form-group">
-            <label for="surname">Surame:</label>
-            <input type="text" class="form-control" id="surname" placeholder="Enter surname" name="surname" required>
+            <label for="surname">Prezime:</label>
+            <input type="text" class="form-control" id="surname" placeholder="Unesi prezime" name="surname" required>
         </div>
         <div class="form-group">
             <label for="username">Username:</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required>
+            <input type="text" class="form-control" id="username" placeholder="Unesi username" name="username" required>
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+            <input type="email" class="form-control" id="email" placeholder="Unesi email" name="email" required>
         </div>
         <div class="form-group">
-            <label for="pass">Password:</label>
-            <input type="password" class="form-control" id="pass" placeholder="Enter password" name="password" required>
+            <label for="pass">Šifra:</label>
+            <input type="password" class="form-control" id="pass" placeholder="Unesi šifru" name="password" required>
         </div>
         <div class="form-group">
-            <label for="pass2">Repeat password:</label>
-            <input type="password" class="form-control" id="pass2" placeholder="Repeat password" name="password2" required>
+            <label for="pass2">Ponovi šifru:</label>
+            <input type="password" class="form-control" id="pass2" placeholder="Ponovi šifru" name="password2" required>
         </div>
         <div class="form-group">
-            <label for="salesperson">Salesperson</label>
+            <label for="salesperson">Prodavac</label>
             <input type="radio" id="salesperson" name="role" value="salesperson">
             <br>
-            <label for="customer">Customer</label>
+            <label for="customer">Kupac</label>
             <input type="radio" id="customer" name="role" value="customer" checked="checked">
         </div>
 
@@ -101,11 +108,11 @@
 
         ?>
 
-        <button type="submit" class="btn btn-primary" name="register">Register</button>
+        <button type="submit" class="btn btn-primary" name="register">Registruj se</button><br><br>
+        <a href="sign.php">
+            Već si registrovan? Klikni ovde da se prijaviš.
+        </a>
     </form>
-    <a href="sign.php">
-        <small id="registered">Already registered? Click here to sign in</small><br>
-    </a>
     <?php echo $msg; ?>
 </div>
 
