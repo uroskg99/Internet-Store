@@ -117,9 +117,15 @@ while($row = mysqli_fetch_assoc($res)){
         </div>
         
        <input type='file' name='file[]' id='file' multiple> 
-       <button type="submit"  name="add_product">Potvrdi</button>
+       <button type="submit"  name="add_product" onclick='return checkOrder()'>Potvrdi</button>
 
 </form>
 </div>
 </body>
 </html>
+
+<script>
+    function checkOrder(){
+        return confirm('Da li ste sigurni da želite da postavite ovaj oglas?');
+    }
+</script>
