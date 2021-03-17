@@ -16,43 +16,41 @@ session_start();
     <link rel="stylesheet" href="product-page.css">
 </head>
 <body>
-<?php
+<div class="row row-column">
+    <div class="col-md-12 column">
+        <a href="home-customer.php">Početna stranica</a>
+        <div class="right-div">
 
-$username = $_SESSION['username'];
-$qry = "SELECT * FROM users WHERE username='$username' ";
-$res = mysqli_query($conn, $qry);
+        <?php        
+        if(isset($_SESSION['username'])){
+        $username = $_SESSION['username'];
+        $qry = "SELECT * FROM users WHERE username='$username' ";
+        $res = mysqli_query($conn, $qry);
 
-while($row = mysqli_fetch_assoc($res)){
-    $name = $row['name'];
-    $surname = $row['surname'];
-    $profilepic = $row['profilepic'];
-}
-
-?>
-<div class="navigation">
-
-    <nav class="navbar navbar-expand-sm">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <h5>You are logged in as <?php echo $_SESSION['username']; ?>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                    <img src="profile-pics/<?php echo $profilepic; ?>" width="40px" height="40px">
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="profile.php">View Profile</a>
-                    <a class="dropdown-item" href="edit-profile.php">Edit Profile</a>
-                    <a class="dropdown-item" href="orders.php">My orders</a>
-                    <a class="dropdown-item" href="logout.php">Logout</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="home-customer.php">Home Page</a>
-            </li>
-        </ul>
-    </nav>
-<br>
+        while($row = mysqli_fetch_assoc($res)){
+            $name = $row['name'];
+            $surname = $row['surname'];
+            $profilepic = $row['profilepic'];
+        }
+        ?>
+            <h5>Prijavljeni ste kao <?php echo $_SESSION['username']; ?>
+            <a class="nav-link dropdown-toggle right-a" href="#" id="navbardrop" data-toggle="dropdown">
+                <img src="profile-pics/<?php echo $profilepic; ?>" width="40px" height="40px">
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="profile.php">Pogledaj profil</a>
+                <a class="dropdown-item" href="edit-profile.php">Izmeni profil</a>
+                <a class="dropdown-item" href="orders.php">Moje porudžbine</a>
+                <a class="dropdown-item" href="logout.php">Odjavi se</a>
+            </div>
+        <?php 
+        }else{?>
+            <h5><a href="sign.php">Prijavite se ovde</a></h5>
+        <?php
+        }        
+        ?>
+        </div>
+    </div>
 </div>
 
 <?php 
@@ -114,6 +112,9 @@ if(isset($_POST['basic-order'])){
 ?>
 <?php
 
+if(!isset($_SESSION['username'])){
+    echo 'Ne mozete kupiti proizvod jer niste prijavljeni!';
+}else{
 if(strlen($customer) == 0){
     ?>
 
@@ -177,6 +178,7 @@ if(strlen($customer) == 0){
     echo '</form>';
 }else{
     echo '<p class="p-info">Već ste kupili ovaj proizvod</p>';
+}
 }
 
 ?>

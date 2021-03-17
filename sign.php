@@ -1,5 +1,17 @@
 <?php
 
+session_start();
+include 'config.php';
+
+if(isset($_SESSION['role'])){
+    if($_SESSION['role'] == "admin"){
+        header("location:home-admin.php");
+    }else if($_SESSION['role'] == "customer"){
+        header("location:home-customer.php");
+    }else{
+        header("location:home-salesman.php");
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +26,7 @@
 </head>
 
 <?php   
-    include 'config.php';
+    $msg = '';
     if(isset($_POST['login'])){
         $login = $_POST['user'];
         $pass = $_POST['password'];
@@ -22,17 +34,16 @@
         $res = mysqli_query($conn, $qry);
 
         while($row = mysqli_fetch_array($res)){
-            //$name = $row['name'];
-            //$surname = $row['surname'];
             $username = $row['username'];
             $email = $row['email'];
             $password = $row['password'];
             $role = $row['role'];
             if($login == $row['username'] or $login == $row['email']){
                 if($pass == $row['password']){
-                    session_start();
 
+                    session_start();
                     $_SESSION['username'] = $row['username'];
+                    $_SESSION['role'] = $role;
 
                     if($role == "admin"){
                         header("location:home-admin.php");
@@ -41,21 +52,23 @@
                     }else{
                         header("location:home-salesman.php");
                     }  
+                }else{
+                    $msg = 'Pogrešno ste uneli vaše informacije ili šifru!';
                 }
             }else{
-                //
+                $msg = 'Pogrešno ste uneli vaše informacije ili šifru!';
+            }
         }
     }
-}
 
 ?>
 <body>
 <div class="container-fluid header">
-    <a href="#">
+    <a href="home-customer.php">
         <img src="website-pics/logo.png" class="logo">
     </a>
 </div>
-
+<p class="error-msg"><?php echo $msg; ?></p>
 <div class="container-fluid">
     <div class="justify-content-center">
         <form action="sign.php" method="post">

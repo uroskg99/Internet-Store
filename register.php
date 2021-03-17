@@ -1,5 +1,17 @@
 <?php
-//include 'config.php';
+
+session_start();
+include 'config.php';
+
+if(isset($_SESSION['role'])){
+    if($_SESSION['role'] == "admin"){
+        header("location:home-admin.php");
+    }else if($_SESSION['role'] == "customer"){
+        header("location:home-customer.php");
+    }else{
+        header("location:home-salesman.php");
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,12 +27,12 @@
 
 <body>
 <div class="container-fluid header">
-    <a href="#">
+    <a href="home-customer.php">
         <img src="website-pics/logo.png" class="logo">
     </a>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid form">
     <form action="" method="POST">
         <div class="form-group">
             <label for="name">Ime:</label>
@@ -71,20 +83,20 @@
             $allowed = true;
             
             if(empty(trim($name)) || empty(trim($surname)) || empty(trim($username))){
-                $msg = "Space can't be an user information!";
+                $msg = "Space ne može biti neka od informacija!";
                 $allowed = false;
             }
 
             if(strlen($password) < 6){
-                $msg = "Password too weak! Must be between 6 and 30 characters";
+                $msg = "Šifra je previše kratka! Izaberite šifru dužine od 6 do 30 karaktera";
                 $allowed = false;
             }else if(strlen($password) > 31){
-                $msg = "Password too strong! Must be between 6 and 30 characters";
+                $msg = "Šifra je previše dugačka! Izaberite šifru dužine od 6 do 30 karaktera";
                 $allowed = false;
             }
 
             if($password != $password2){
-                $msg = "Repeat the same password!";
+                $msg = "Ponovite istu šifru!";
                 $allowed = false;
             }
 
@@ -92,7 +104,7 @@
             $result = mysqli_query($conn, $qry_register);
             while($row = mysqli_fetch_array($result)){
                 if($username == $row['username'] || $email == $row['email']){
-                    $msg = "User with the same username or email already exists!";
+                    $msg = "Već postoji korisnik sa tim email-om ili username-om!";
                     $allowed = false;
                     break;
                 }
@@ -113,7 +125,7 @@
             Već si registrovan? Klikni ovde da se prijaviš.
         </a>
     </form>
-    <?php echo $msg; ?>
+    <p class="error-msg"><?php echo $msg; ?></p>
 </div>
 
 

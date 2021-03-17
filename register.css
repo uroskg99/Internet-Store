@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-} 
+}
 
 .header {
     height: 90px;
@@ -41,4 +41,18 @@ form {
     left: 50%;
     transform: translate(-50%, 0);
     width: 50%;
+}
+
+.error-msg {
+    position: absolute;
+    color: red;
+    font-weight: bold;
+    left:50%;
+    top: 12%;
+    transform: translate(-50%, 0);
+}
+
+
+.form {
+    margin-top: 30px;
 }
