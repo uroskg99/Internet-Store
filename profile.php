@@ -13,7 +13,7 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="profiles.css">
 </head>
 <body>
 
@@ -33,16 +33,15 @@ while($row = mysqli_fetch_assoc($res)){
 }
 
 ?>
-<div class="container-fluid navigation">
-
-<nav class="navbar navbar-expand-sm">
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <h5>You are logged in as <?php echo $_SESSION['username']; ?>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                <img src="profile-pics/<?php echo $profilepic; ?>" width="40px" height="40px">
+<div class="row row-column">
+    <div class="col-md-12 column">
+        <a href="home-customer.php">
+            <img src="website-pics/logo.png" class="logo">
+        </a>
+        <div class="right-div">
+            <h5>You are logged in as <?php echo $_SESSION['username']; ?></h5>
+            <a class="nav-link dropdown-toggle right-a" href="#" id="navbardrop" data-toggle="dropdown">
+                <img src="profile-pics/<?php echo $profilepic; ?>" width="45px" height="45px" class="mini-profile">
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="profile.php">View Profile</a>
@@ -50,23 +49,18 @@ while($row = mysqli_fetch_assoc($res)){
                 <a class="dropdown-item" href="orders.php">My orders</a>
                 <a class="dropdown-item" href="logout.php">Logout</a>
             </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="home-customer.php">Home Page</a>
-        </li>
-    </ul>
-</nav>
-<br>
+        </div>
+    </div>
 </div>
 
 <div class="container user-profile">
-    <div class="picture"><img src="profile-pics/<?php echo $profilepic; ?>" width="150px" height="150px"></div>
+    <div class="picture"><img src="profile-pics/<?php echo $profilepic; ?>" width="150px" height="150px" class="profile-pic"></div>
     <ul class="list-group">
-        <li class="list-group-item">Name: <?php echo $name; ?></li>
-        <li class="list-group-item">Surname: <?php echo $surname; ?></li>
-        <li class="list-group-item">Username: <?php echo $username; ?></li>
-        <li class="list-group-item">Email: <?php echo $email; ?></li>
-        <li class="list-group-item">Your role is: <?php echo $role; ?></li>
+        <li class="list-group-item"><span>Ime: </span><?php echo $name; ?></li>
+        <li class="list-group-item"><span>Prezime: </span><?php echo $surname; ?></li>
+        <li class="list-group-item"><span>Username: </span><?php echo $username; ?></li>
+        <li class="list-group-item"><span>Email: </span><?php echo $email; ?></li>
+        <li class="list-group-item"><span>Vi ste: </span><?php echo $role; ?></li>
     </ul>
 
 </div>  
