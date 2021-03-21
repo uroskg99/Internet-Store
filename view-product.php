@@ -83,7 +83,7 @@ while($row = mysqli_fetch_assoc($res)){
 </div>
 
 <?php
-    $sql = "SELECT * FROM products WHERE salesman='$username' AND customer=''";
+    $sql = "SELECT * FROM products WHERE salesman='$username' AND customer!=''";
     $result = mysqli_query($conn, $sql);
     $resultCheck = mysqli_num_rows($result);
     if($resultCheck > 0){
@@ -95,11 +95,11 @@ while($row = mysqli_fetch_assoc($res)){
             <?php echo "<a href='product-page-salesman.php?name=".$row['name']."'class='name'>"; ?>
             <p class="name"> <?php echo $row['name']; ?></p> <?php echo "</a>"; ?>
             </div>
-            <?php echo "<a href='delete-product-check.php?name=".$row['name']."'>"; ?>
-            <button class="btn btn-dark" type="submit">Izbriši</button>
+            <?php echo "<a href='submit-product-check.php?name=".$row['name']."'>"; ?>
+            <button class="btn btn-dark" type="submit" onclick='return submitProduct()'>Potvrdi</button>
             <?php echo "</a>"; ?>
-            <?php echo "<a href='update-product-check.php?name=".$row['name']."'>"; ?>
-            <button class="btn btn-dark" type="submit">Izmeni</button>
+            <?php echo "<a href='cancel-product-check.php?name=".$row['name']."'>"; ?>
+            <button class="btn btn-dark" type="submit" onclick='return cancelProduct()'>Otkaži</button>
             <?php echo "</a>"; ?>
         </div>
     </div>
@@ -107,3 +107,13 @@ while($row = mysqli_fetch_assoc($res)){
 <?php
     }}
 ?>
+
+
+<script>
+    function cancelProduct(){
+        return confirm('Da li ste sigurni da želite da otkažete porudžbinu?');
+    }
+    function submitProduct(){
+        return confirm('Da li ste sigurni da želite da potvrdite porudžbinu?');
+    }
+</script>
