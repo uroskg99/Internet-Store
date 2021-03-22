@@ -83,10 +83,10 @@ while($row = mysqli_fetch_assoc($res)){
             <?php echo "<a href='product-page-salesman.php?name=".$row['name']."'class='name'>"; ?>
             <p class="name"> <?php echo $row['name']; ?></p> <?php echo "</a>"; ?>
             </div>
-            <?php echo "<a href='delete-product-check.php?name=".$row['name']."'>"; ?>
+            <?php echo "<a href='delete-user-check.php?name=".$row['name']."'>"; ?>
             <button class="btn btn-dark" type="submit">Izbriši</button>
             <?php echo "</a>"; ?>
-            <?php echo "<a href='update-product-check.php?name=".$row['name']."'>"; ?>
+            <?php echo "<a href='update-user-check.php?name=".$row['name']."'>"; ?>
             <button class="btn btn-dark" type="submit">Izmeni</button>
             <?php echo "</a>"; ?>
         </div>
