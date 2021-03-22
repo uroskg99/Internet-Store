@@ -59,7 +59,6 @@ while($row = mysqli_fetch_assoc($res)){
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="profile.php">Pogledaj profil</a>
                 <a class="dropdown-item" href="edit-profile.php">Izmeni profil</a>
-                <a class="dropdown-item" href="orders.php">Moje porudžbine</a>
                 <a class="dropdown-item" href="logout.php">Odjavi se</a>
             </div>
         <?php 
