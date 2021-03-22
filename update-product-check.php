@@ -1,3 +1,10 @@
+<?php
+include 'config.php';
+session_start();
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,8 +101,6 @@
 
 <?php
 
-include 'config.php';
-session_start();
 
 $product_name = $_GET['name'];
 $sql = "SELECT * FROM products WHERE name='$product_name'";
