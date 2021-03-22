@@ -35,9 +35,9 @@ while($row = mysqli_fetch_assoc($res)){
 
 <div class="row row-column">
     <div class="col-md-12 column">
-        <a href="home-customer.php">Početna stranica</a>
-        <a href="upload-product.php">Postavi oglas</a>
-        <a href="view-product.php">Pregledaj poružbine</a>
+        <a href="home-customer.php" class="a">Početna stranica</a>
+        <a href="upload-product.php" class="a">Postavi oglas</a>
+        <a href="view-product.php" class="a">Pregledaj poružbine</a>
         <div class="right-div">
 
         <?php        
