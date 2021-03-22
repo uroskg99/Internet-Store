@@ -163,7 +163,7 @@ if(isset($_POST['add_user'])) {
     }
 
     if($allowed){
-        $qry_insert = "INSERT INTO users (name,surname,username,email,password,role,profilepic) VALUES ('$user_name', '$user_surname', '$username', '$email', '$password', '$role', '$picture')";
+        $qry_insert = "INSERT INTO users (name,surname,username,email,password,role,profilepic) VALUES ('$user_name', '$user_surname', '$username', '$email', '$password1', '$role', '$picture')";
         mysqli_query($conn, $qry_insert);
         header("location:home-admin.php");
     }
