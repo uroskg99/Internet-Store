@@ -17,6 +17,7 @@ if(!isset($_SESSION['role'])){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="edit-profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -37,40 +38,17 @@ while($row = mysqli_fetch_assoc($res)){
     $username = $row['username'];
 }
 
-if(isset($_POST['update_name'])){
+if(isset($_POST['update_info'])){
     $name = $_POST['new_name'];
-    $sql = "UPDATE users SET name='$name' WHERE username='$username_prim'";
-    $res = mysqli_query($conn, $sql);
-
-    if($res){
-        header("location:profile.php");
-    }
-}
-
-if(isset($_POST['update_surname'])){
     $surname = $_POST['new_surname'];
-    $sql = "UPDATE users SET surname='$surname' WHERE username='$username_prim'";
-    $res = mysqli_query($conn, $sql);
-
-    if($res){
-        header("location:profile.php");
-    }
-}
-
-if(isset($_POST['update_username'])){
     $username = $_POST['new_username'];
-    $sql = "UPDATE users SET username='$username' WHERE username='$username_prim'";
-    $res = mysqli_query($conn, $sql);
-
-    if($res){
-        $_SESSION['username'] = $username;
-        header("location:profile.php");
-    }
-}
-
-if(isset($_POST['update_email'])){
     $email = $_POST['new_email'];
-    $sql = "UPDATE users SET email='$email' WHERE username='$username_prim'";
+
+    $sql = "UPDATE users SET `name` = '$name',
+    `surname` = '$surname',
+    `username` = '$username',
+    `email` = '$email' WHERE username='$username_prim'";
+
     $res = mysqli_query($conn, $sql);
 
     if($res){
@@ -118,16 +96,15 @@ if(isset($_POST['update_profilepic'])){
 }
 
 ?>
-<div class="container-fluid navigation">
-
-<nav class="navbar navbar-expand-sm">
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <h5>You are logged in as <?php echo $_SESSION['username']; ?>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                <img src="profile-pics/<?php echo $profilepic; ?>" width="40px" height="40px">
+<div class="row row-column">
+    <div class="col-md-12 column">
+        <a href="home-customer.php">
+            <img src="website-pics/logo.png" class="logo">
+        </a>
+        <div class="right-div">
+            <h5>You are logged in as <?php echo $_SESSION['username']; ?></h5>
+            <a class="nav-link dropdown-toggle right-a" href="#" id="navbardrop" data-toggle="dropdown">
+                <img src="profile-pics/<?php echo $profilepic; ?>" width="45px" height="45px" class="mini-profile">
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="profile.php">View Profile</a>
@@ -135,46 +112,64 @@ if(isset($_POST['update_profilepic'])){
                 <a class="dropdown-item" href="orders.php">My orders</a>
                 <a class="dropdown-item" href="logout.php">Logout</a>
             </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="home-customer.php">Home Page</a>
-        </li>
-    </ul>
-</nav>
-<br>
+        </div>
+    </div>
 </div>
 
-<div class="container">
-    <form action="" method="POST" enctype="multipart/form-data">
-        <h3>Here you can edit your personal informations and change password!</h3>
-        <p>Name</p><input type="text" name="new_name" value=<?php echo $name; ?>>
-        <button class="btn btn-primary" name="update_name" onclick='return checkEdit()'>Update name</button>
-
-        <p>Surname</p><input type="text" name="new_surname" value=<?php echo $surname; ?>>
-        <button class="btn btn-primary" name="update_surname" onclick='return checkEdit()'>Update surname</button>
-
-        <p>Username</p><input type="text" name="new_username" value=<?php echo $username; ?>>
-        <button class="btn btn-primary" name="update_username" onclick='return checkEdit()'>Update username</button>
-
-        <p>Email</p><input type="text" name="new_email" value=<?php echo $email; ?>>
-        <button class="btn btn-primary" name="update_email" onclick='return checkEdit()'>Update email</button>
-    </form>
-    <div class="right-side">
-        <img src="profile-pics/<?php echo $profilepic; ?>" width="120px" height="120px">
-        <form action="" method="POST" enctype="multipart/form-data">
-            <input type="file" name="picture"><br>
-            <button class="btn btn-primary" name="update_profilepic">Update profile picture</button>
-        </form>
-        <div class="password">
-            <form action="" method="POST" enctype="multipart/form-data">
+<h3>Ovde možete promeniti vaše lične podatke i vašu šifru</h3>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-5">
+            <div class="justify-content-center">
+                <form action="" method="POST" class="form1" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="name">Ime</label>
+                        <input type="text" class="form-control" value=<?php echo $name;?> name="new_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="surname">Prezime</label>
+                        <input type="text" class="form-control" value=<?php echo $surname;?> name="new_surname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" value=<?php echo $username;?> name="new_username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" value=<?php echo $email;?> name="new_email" required>
+                    </div>
+                    <button class="btn btn-primary" type="submit" name="update_info" onclick='return checkEdit()'>Ažuriraj lične podatke</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-xl-3 col2">
+            <div class="justify-content-center pic-center">
+                <img src="profile-pics/<?php echo $profilepic; ?>" width="120px" height="120px" class="profile-pic">  
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <input class="file" type="file" name="picture"><br>
+                    <button class="btn btn-primary pic-update" name="update_profilepic" onclick='return checkEdit()'>Ažuriraj profilnu sliku</button>
+                </form>  
+            </div>
+        </div>
+        <div class="col-xl-4 col3">
+            <form class="form2" action="" method="POST" enctype="multipart/form-data">
                 <div class="hide" id="pass">
-                    <p>Current password</p><input type="password" name="old_password">
-                    <p>New password</p><input type="password" name="new_password">
-                    <p>Repeat new password</p><input type="password" name="new_password2"><br>
-                </div>
+                    <div class="form-group">
+                        <label>Trenutna šifra</label>
+                        <input type="password" class="form-control" placeholder="Trenutna šifra" name="old_password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nova šifra</label>
+                        <input type="password" class="form-control" placeholder="Nova šifra" name="new_password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ponovi novu šifru</label>
+                        <input type="password" class="form-control" placeholder="Ponovi novu šifru" name="new_password2" required>
+                    </div>
                 <button class="btn btn-primary change-pass hide" id="change-pass" name="update_pass" onclick='return checkEdit()'>Update password</button><br>
+                </div>
             </form>
-            <button class="btn btn-primary pass-button" id="pass-button">Change password</button><br>
+            <button class="btn btn-primary pass-button" id="pass-button">Promeni šifru</button><br>
             <?php echo $msg; ?>
         </div>
     </div>
