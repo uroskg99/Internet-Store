@@ -73,13 +73,19 @@ session_start();
 <?php
 $msg = '';
 $name = $_GET['name'];
+$allowed = true;
 
 if(isset($_POST['button_update_user_name'])){
     $user_name = $_POST['update_user_name'];
     $sql = "UPDATE users SET name = '$user_name' WHERE name = '$name'";
     $result = mysqli_query($conn, $sql);
 
-    if($result){
+    if(empty(trim($user_name))){
+        $msg = "Space ne može biti neka od informacija!";
+        $allowed = false;
+    }
+
+    if($allowed){
         $msg = "Uspešno!";
     }else{
         $msg = "Neuspešno!";
@@ -92,7 +98,12 @@ if(isset($_POST['button_update_user_surname'])){
     $sql = "UPDATE users SET surname = '$user_surname' WHERE name = '$name'";
     $result = mysqli_query($conn, $sql);
 
-    if($result){
+    if(empty(trim($user_surname))){
+        $msg = "Space ne može biti neka od informacija!";
+        $allowed = false;
+    }
+
+    if($allowed){
         $msg = "Uspešno!";
     }else{
         $msg = "Neuspešno!";
@@ -102,26 +113,50 @@ if(isset($_POST['button_update_user_surname'])){
 
 if(isset($_POST['button_update_username'])){
     $user = $_POST['update_username'];
-    $sql = "UPDATE users SET username = '$user' WHERE name = '$name'";
-    $result = mysqli_query($conn, $sql);
+    
+    $qry_register = "SELECT username FROM users";
+    $result1 = mysqli_query($conn, $qry_register);
+    while($row = mysqli_fetch_array($result1)){
+        if($user == $row['username']){
+            $msg = "Već postoji korisnik sa tim username-om!";
+            $allowed = false;
+            break;
+        }
+    }
 
-    if($result){
-        $msg = "Uspešno!";
-    }else{
-        $msg = "Neuspešno!";
+    if(empty(trim($user))){
+        $msg = "Space ne može biti neka od informacija!";
+        $allowed = false;
+    }
+
+    if($allowed){
+        $sql = "UPDATE users SET username = '$user' WHERE name = '$name'";
+        $result = mysqli_query($conn, $sql);
     }
 }
 
 
 if(isset($_POST['button_update_email'])){
     $email = $_POST['update_email'];
-    $sql = "UPDATE users SET email = '$email' WHERE name = '$name'";
-    $result = mysqli_query($conn, $sql);
 
-    if($result){
-        $msg = "Uspešno!";
-    }else{
-        $msg = "Neuspešno!";
+    $qry_register = "SELECT email FROM users";
+    $result1 = mysqli_query($conn, $qry_register);
+    while($row = mysqli_fetch_array($result1)){
+        if($email == $row['email']){
+            $msg = "Već postoji korisnik sa tim email-om!";
+            $allowed = false;
+            break;
+        }
+    }
+
+    if(empty(trim($email))){
+        $msg = "Space ne može biti neka od informacija!";
+        $allowed = false;
+    }
+
+    if($allowed){
+        $sql = "UPDATE users SET email = '$email' WHERE name = '$name'";
+        $result = mysqli_query($conn, $sql);
     }
 }
 
@@ -129,7 +164,6 @@ if(isset($_POST['button_update_email'])){
 if(isset($_POST['button_update_password'])){
     $password1 = $_POST['password1'];
     $password2 = $_POST['password2'];
-    $allowed = true;
 
     if(strlen($password1) < 6){
         $msg = "Šifra je previše kratka! Izaberite šifru dužine od 6 do 30 karaktera";
