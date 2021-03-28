@@ -62,13 +62,13 @@ if(isset($_POST['update_pass'])){
     $new_pass2 = $_POST['new_password2'];
 
     if($old_pass != $password){
-        $msg = "Please, enter the right current password!";
+        $msg = "Unesite tačnu trenutnu šifru!";
     }else if(strlen($new_pass) < 6){
-        $msg = "Password too weak! Must be between 6 and 30 characters";
+        $msg = "Šifra je previše kratka! Izaberite šifru dužine od 6 do 30 karaktera";
     }else if(strlen($new_pass) > 31){
-        $msg = "Password too strong! Must be between 6 and 30 characters";
+        $msg = "Šifra je previše dugačka! Izaberite šifru dužine od 6 do 30 karaktera";
     }else if($new_pass != $new_pass2){
-        $msg = "Please, repeat the same password!";
+        $msg = "Ponovite istu šifru!";
     }else{
         $sql = "UPDATE users SET password='$new_pass' WHERE username='$username_prim'";
         $res = mysqli_query($conn, $sql);
@@ -102,15 +102,15 @@ if(isset($_POST['update_profilepic'])){
             <img src="website-pics/logo.png" class="logo">
         </a>
         <div class="right-div">
-            <h5>You are logged in as <?php echo $_SESSION['username']; ?></h5>
+            <h5>Ulogovani ste kao <?php echo $_SESSION['username']; ?></h5>
             <a class="nav-link dropdown-toggle right-a" href="#" id="navbardrop" data-toggle="dropdown">
                 <img src="profile-pics/<?php echo $profilepic; ?>" width="45px" height="45px" class="mini-profile">
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="profile.php">View Profile</a>
-                <a class="dropdown-item" href="edit-profile.php">Edit Profile</a>
-                <a class="dropdown-item" href="orders.php">My orders</a>
-                <a class="dropdown-item" href="logout.php">Logout</a>
+                <a class="dropdown-item" href="profile.php">Pogledaj Profil</a>
+                <a class="dropdown-item" href="edit-profile.php">Izmeni Profil</a>
+                <a class="dropdown-item" href="orders.php">Moje Porudžbine</a>
+                <a class="dropdown-item" href="logout.php">Odjavi se</a>
             </div>
         </div>
     </div>

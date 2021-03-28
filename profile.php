@@ -43,15 +43,15 @@ while($row = mysqli_fetch_assoc($res)){
             <img src="website-pics/logo.png" class="logo">
         </a>
         <div class="right-div">
-            <h5>You are logged in as <?php echo $_SESSION['username']; ?></h5>
+            <h5>Ulogovani ste kao <?php echo $_SESSION['username']; ?></h5>
             <a class="nav-link dropdown-toggle right-a" href="#" id="navbardrop" data-toggle="dropdown">
                 <img src="profile-pics/<?php echo $profilepic; ?>" width="45px" height="45px" class="mini-profile">
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="profile.php">View Profile</a>
-                <a class="dropdown-item" href="edit-profile.php">Edit Profile</a>
-                <a class="dropdown-item" href="orders.php">My orders</a>
-                <a class="dropdown-item" href="logout.php">Logout</a>
+                <a class="dropdown-item" href="profile.php">Pogledaj Profil</a>
+                <a class="dropdown-item" href="edit-profile.php">Izmeni Profil</a>
+                <a class="dropdown-item" href="orders.php">Moje Porudžbine</a>
+                <a class="dropdown-item" href="logout.php">Odjavi se</a>
             </div>
         </div>
     </div>
