@@ -2,11 +2,12 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .online-payment, .basic-payment {
     max-width: 560px;
-    background-color: rgb(231, 226, 226);
+    background-color: #d9eefa;
     height: auto;
     padding:35px;
     margin: 0 30px;
@@ -16,14 +17,6 @@
     border-radius: 10px;
 }
 
-.navbar {
-    float: right;
-}
-
-.navigation {
-    height: 60px;
-}
-
 .btn {
     width: 50%;
     position: relative;
@@ -31,6 +24,7 @@
     bottom: -40px;
     transform: translate(-50%, -50%);
     background-color: rgb(100, 100, 226);
+    min-width: 164px;
 }
 
 .btn:hover {
@@ -38,7 +32,7 @@
 }
 
 .p-info {
-    margin-left: 30%;
+    text-align: center;
     font-weight: bold;
     margin-top: 40px;
     font-size: 22px;
@@ -46,11 +40,15 @@
 
 h3 {
     text-align: center;
+    color: rgb(15, 87, 163);
+    font-weight: bolder;
 }
 
 label {
     display: block;
     margin-bottom: 10px;
+    font-weight: 600;
+    color: rgb(15, 87, 163);
 }
 
 .input {
@@ -62,4 +60,106 @@ label {
     letter-spacing: 1px;
     word-wrap: 3px;
     outline: none;
+}
+
+.row {
+    background-color: white;
+    padding-bottom: 10px;
+}
+
+.right-div {
+    float: right;
+}
+
+a {
+    padding: 0;
+}
+
+.column {
+    display: inline-block;
+}
+
+.right-div, .right-a {
+    float: right;
+}
+
+.right-div {
+    display: inline-flex;
+    margin-top: 10px;
+}
+
+.row-column {
+    width: 100%;
+}
+
+.logo {
+    height: 66.5px;
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+h5 {
+    color: rgb(15, 87, 163);
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.profile-pic {
+    border-radius: 50%;
+}
+
+.mini-profile {
+    border-radius: 50%;
+}
+
+.gallery {
+    margin-top: 50px;
+    width: 60%;
+    min-width: 480px;
+}
+
+.carousel-inner { 
+    height: 300px;
+}
+
+.carousel-item {
+    height: 100%;
+}
+
+.gallery-pic {
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background-color: #000;
+    border-radius: 50%;
+    top: calc(50% - 25px);
+}
+
+.type {
+    font-weight: 600;
+}
+
+.info {
+    width: 100%;
+    text-align: center;
+}
+
+.salesman {
+    font-weight: 700;
+}
+
+.small-info {
+    font-weight: bold;
+}
+
+.input:focus {
+    outline-style: solid;
+    outline-color: rgb(58, 57, 57);
+    outline-width: thin;
 }

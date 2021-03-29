@@ -166,7 +166,7 @@ if(isset($_POST['update_profilepic'])){
                         <label>Ponovi novu šifru</label>
                         <input type="password" class="form-control" placeholder="Ponovi novu šifru" name="new_password2" required>
                     </div>
-                <button class="btn btn-primary change-pass hide" id="change-pass" name="update_pass" onclick='return checkEdit()'>Update password</button><br>
+                <button class="btn btn-primary change-pass hide" id="change-pass" name="update_pass" onclick='return checkEdit()'>Ažuriraj šifru</button><br>
                 </div>
             </form>
             <button class="btn btn-primary pass-button" id="pass-button">Promeni šifru</button><br>
@@ -188,7 +188,7 @@ if(isset($_POST['update_profilepic'])){
     }
 
     function checkEdit(){
-        return confirm('Please, confirm if You are sure You want to edit your personal informations!');
+        return confirm('Molimo vas, potvrdite ako ste sigurni da želite da promenite vaše lične podatke!');
     }
 </script>
 

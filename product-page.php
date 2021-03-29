@@ -14,44 +14,96 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="product-page.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
+
+<?php        
+if(isset($_SESSION['username'])){
+$username = $_SESSION['username'];
+$qry = "SELECT * FROM users WHERE username='$username' ";
+$res = mysqli_query($conn, $qry);
+
+while($row = mysqli_fetch_assoc($res)){
+    $name = $row['name'];
+    $surname = $row['surname'];
+    $profilepic = $row['profilepic'];
+}
+?>
 <div class="row row-column">
     <div class="col-md-12 column">
-        <a href="home-customer.php">Početna stranica</a>
+        <a href="home-customer.php">
+            <img src="website-pics/logo.png" class="logo">
+        </a>
+    <div class="right-div">
+    <h5>Ulogovani ste kao <?php echo $_SESSION['username']; ?></h5>
+    <a class="nav-link dropdown-toggle right-a" href="#" id="navbardrop" data-toggle="dropdown">
+        <img src="profile-pics/<?php echo $profilepic; ?>" width="45px" height="45px" class="mini-profile">
+    </a>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="profile.php">Pogledaj Profil</a>
+        <a class="dropdown-item" href="edit-profile.php">Izmeni Profil</a>
+        <a class="dropdown-item" href="orders.php">Moje Porudžbine</a>
+        <a class="dropdown-item" href="logout.php">Odjavi se</a>
+    </div>
+</div>
+              
+<?php 
+}else{?>
+
+<div class="row row-column">
+    <div class="col-md-12 column">
+        <a href="home-customer.php">
+            <img src="website-pics/logo.png" class="logo">
+        </a>
         <div class="right-div">
-
-        <?php        
-        if(isset($_SESSION['username'])){
-        $username = $_SESSION['username'];
-        $qry = "SELECT * FROM users WHERE username='$username' ";
-        $res = mysqli_query($conn, $qry);
-
-        while($row = mysqli_fetch_assoc($res)){
-            $name = $row['name'];
-            $surname = $row['surname'];
-            $profilepic = $row['profilepic'];
-        }
-        ?>
-            <h5>Prijavljeni ste kao <?php echo $_SESSION['username']; ?>
-            <a class="nav-link dropdown-toggle right-a" href="#" id="navbardrop" data-toggle="dropdown">
-                <img src="profile-pics/<?php echo $profilepic; ?>" width="40px" height="40px">
-            </a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="profile.php">Pogledaj profil</a>
-                <a class="dropdown-item" href="edit-profile.php">Izmeni profil</a>
-                <a class="dropdown-item" href="orders.php">Moje porudžbine</a>
-                <a class="dropdown-item" href="logout.php">Odjavi se</a>
-            </div>
-        <?php 
-        }else{?>
             <h5><a href="sign.php">Prijavite se ovde</a></h5>
-        <?php
-        }        
-        ?>
         </div>
     </div>
 </div>
+
+<?php
+}      
+
+$product_name = mysqli_real_escape_string($conn, $_GET['name']);
+$sql_gallery = "SELECT picture FROM products_gallery WHERE product='$product_name' ";
+$result_gallery = mysqli_query($conn, $sql_gallery);
+
+?>
+
+<div class="container gallery">
+    <div class="row justify-content-center mb-2">
+        <div class="col-lg-10">
+        <div id="demo" class="carousel slide" data-ride="carousel">
+
+            <div class="carousel-inner">
+            <?php
+            $i = 0;
+            foreach ($result_gallery as $row){
+                $actives = '';
+                if($i == 0){
+                    $actives = 'active';
+                }
+            ?>
+                <div class="carousel-item <?php echo $actives; ?>">
+                    <img src="products-pics/<?php echo $row['picture']; ?>" alt="<?php echo $i; ?>" class="gallery-pic">
+                </div>
+                <?php $i++; } ?>
+            </div>
+
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            </a>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
 
 <?php 
 
@@ -71,16 +123,17 @@ session_start();
     $salesman = $row['salesman'];
     $customer = $row['customer'];
     ?>
-
-    <div class="container">
-        <h5><?php echo $name . ' '; ?><span>Cena: <?php echo $price . $currency . '. Količina: ' . $quantity; ?></span></h5>
-        <p>Kategorija proizvoda: <?php echo $type; ?></p>
-        <br>
-        <p><?php echo $description . ' Lokacija je: ' . $location; ?></p>
-        <div class="row">
-            <div class="col-sm-12">
-                Vlasnik ovog proizvoda je: <?php echo $salesman; ?>
-            </div>
+    <div class="container-fluid">
+        <div class="info">
+            <h5 class="small-info"><?php echo $name . ', '; ?><span>cena: <?php echo $price . $currency . '. Količina: ' . $quantity; ?></span></h5>
+            <p>Kategorija proizvoda: <span class="type"><?php echo $type; ?></span></p>
+            <br>
+            <p><?php echo $description . '. Lokacija je: ' . $location; ?></p>
+            <p>Vlasnik ovog proizvoda je:
+                <span class="salesman">
+                    <?php echo $salesman; ?>
+                </span>
+            </p>
         </div>
     </div>
     <?php
@@ -113,7 +166,7 @@ if(isset($_POST['basic-order'])){
 <?php
 
 if(!isset($_SESSION['username'])){
-    echo 'Ne mozete kupiti proizvod jer niste prijavljeni!';
+    echo '<p class="p-info">Ne mozete kupiti proizvod jer niste prijavljeni!</p>';
 }else{
 if(strlen($customer) == 0){
     ?>
