@@ -130,9 +130,11 @@ $result_gallery = mysqli_query($conn, $sql_gallery);
             <br>
             <p><?php echo $description . '. Lokacija je: ' . $location; ?></p>
             <p>Vlasnik ovog proizvoda je:
-                <span class="salesman">
-                    <?php echo $salesman; ?>
-                </span>
+                <?php echo "<a href='salesman-profile.php?salesman-name=". $salesman ."' style='text-decoration-color:white'>"; ?>
+                    <span class="salesman">
+                        <?php echo $salesman; ?>
+                    </span>
+                </a>
             </p>
         </div>
     </div>
