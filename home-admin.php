@@ -15,7 +15,7 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="home-sale.css">
+    <link rel="stylesheet" href="home-admin.css">
 </head>
 <body>
 
@@ -35,10 +35,7 @@ while($row = mysqli_fetch_assoc($res)){
 
 <div class="row row-column">
     <div class="col-md-12 column">
-        <a href="home-admin.php" class="a">Početna stranica</a>
-        <a href="add-user.php" class="a">Dodaj korisnika</a>
         <div class="right-div">
-
         <?php        
         if(isset($_SESSION['username'])){
         $username = $_SESSION['username'];
@@ -60,6 +57,8 @@ while($row = mysqli_fetch_assoc($res)){
                 <a class="dropdown-item" href="edit-profile.php">Izmeni profil</a>
                 <a class="dropdown-item" href="logout.php">Odjavi se</a>
             </div>
+            <br>
+
         <?php 
         }else{?>
             <h5><a href="sign.php">Prijavite se ovde</a></h5>
@@ -67,9 +66,10 @@ while($row = mysqli_fetch_assoc($res)){
         }        
         ?>
         </div>
+       <a href="#" class="a">Početna stranica</a><br>
+       <a href="add-user.php" class="a">Dodaj korisnika</a><br>
     </div>
 </div>
-
 <?php
     $sql = "SELECT * FROM users WHERE role!='admin'";
     $result = mysqli_query($conn, $sql);
@@ -84,10 +84,11 @@ while($row = mysqli_fetch_assoc($res)){
             <p class="name"> <?php echo $row['name']; ?></p> <?php echo "</a>"; ?>
             </div>
             <?php echo "<a href='delete-user-check.php?name=".$row['name']."'>"; ?>
-            <button class="btn btn-dark" type="submit">Izbriši</button>
+            <button class="btn" type="submit">Izbriši</button>
             <?php echo "</a>"; ?>
             <?php echo "<a href='update-user-check.php?name=".$row['name']."'>"; ?>
-            <button class="btn btn-dark" type="submit">Izmeni</button>
+            <button class="btn" type="submit">Izmeni</button>
+            <?php echo "<br><br><br>"; ?>
             <?php echo "</a>"; ?>
         </div>
     </div>
