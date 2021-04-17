@@ -13,7 +13,6 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="update-user.css">
 </head>
 
 <body>  
@@ -50,55 +49,55 @@ while($row = mysqli_fetch_assoc($res)){
 
 
 <div class="add" id="add">
-<h3>Izmena podataka o korisniku</h3><br>
 <form action="" method="POST" enctype="multipart/form-data">
-       <label for="update_name">Ime:</label>
-       <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Unesi ime korisnika:" name="update_user_name"><br>
-          <button class="btn btn-dark" type="submit" name="button_update_user_name" onclick='return check()'>Izmeni ime</button><br><br>
+       <div class="form-group">
+          <label for="update_user_name">Ime</label>
+          <input type="text" class="form-control" placeholder="Unesi ime korisnika:" name="update_user_name">
+          <button class="btn btn-dark" type="submit" name="button_update_user_name" onclick='return check()'>Izmeni ime</button><br><br><br>
        </div>
 
-       <label for="update_surname">Prezime:</label>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Unesi prezime korisnika:" name="update_user_surname"><br>
-            <button class="btn btn-dark" type="submit" name="button_update_user_surname" onclick='return check()'>Izmeni prezime</button><br><br>
+        <div class="form-group">
+            <label for="update_user_surname">Prezime</label>
+            <input type="text" class="form-control" placeholder="Unesi prezime korisnika:" name="update_user_surname">
+            <button class="btn btn-dark" type="submit" name="button_update_user_surname" onclick='return check()'>Izmeni prezime</button><br><br><br>
         </div>
 
-        <label for="update_surname">Korisničko ime:</label>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Unesi korisničko ime:" name="update_username"><br>
-            <button class="btn btn-dark" type="submit" name="button_update_username" onclick='return check()'>Izmeni korisničko ime</button><br><br>
+        <div class="form-group">
+            <label for="update_username">Korisničko ime</label>
+            <input type="text" class="form-control" placeholder="Unesi korisničko ime:" name="update_username">
+            <button class="btn btn-dark" type="submit" name="button_update_username" onclick='return check()'>Izmeni korisničko ime</button><br><br><br>
         </div>
 
-        <label for="update_email">Email:</label>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Unesi e-mail adresu:" name="update_email"><br>
-            <button class="btn btn-dark" type="submit" name="button_update_email" onclick='return check()'>Izmeni email adresu</button><br><br>
+        <div class="form-group">
+            <label for="update_email">Email</label>
+            <input type="text" class="form-control" placeholder="Unesi e-mail adresu:" name="update_email">
+            <button class="btn btn-dark" type="submit" name="button_update_email" onclick='return check()'>Izmeni email adresu</button><br><br><br>
         </div>
 
-        <label for="password1">Lozinka:</label>
-
-
-        <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Unesi lozinku:" name="password1">
-            <input type="text" class="form-control" placeholder="Ponovi lozinku:" name="password2"><br>
-            <button class="btn btn-dark" type="submit" name="button_update_password" onclick='return check()'>Izmeni lozinku</button><br><br>
+        <div class="form-group">
+            <label for="password1">Lozinka</label>
+            <input type="text" class="form-control" placeholder="Unesi lozinku:" name="password1">
+        </div>
+        <div class="form-group">
+            <label for="password2">Ponovi lozinku</label>
+            <input type="text" class="form-control" placeholder="Ponovi lozinku:" name="password2">
+            <button class="btn btn-dark" type="submit" name="button_update_password" onclick='return check()'>Izmeni lozinku</button><br><br><br>
         </div>
 
-        <label for="role">Korisnik je:</label>
-        <div class="input-group mb-3">
+        <label for="role">Korisnik je</label>
+        <div class="form-group">
            <select name="update_role" class="form-control">
+              <option disabled selected>Izaberi ulogu: </option>
               <option>Prodavac</option>
               <option>Kupac</option>
             </select>
-            <br>
-            <button class="btn btn-dark" type="submit" name="button_update_role" onclick='return check()'>Izmeni ulogu</button><br><br>
+            <button class="btn btn-dark" type="submit" name="button_update_role" onclick='return check()'>Izmeni ulogu</button><br><br><br>
         </div>
-
-        <label for="picture">Profilna fotografija:</label>
-        <div class="input-group mb-3">
+        
+        <div class="form-group">
+            <label for="picture">Profilna fotografija</label><br>
             <input type="file" name="picture">
-            <button class="btn btn-dark" type="submit" name="button_update_picture" onclick='return check()'>Izmeni profilnu fotografiju</button><br><br>
+            <button class="btn btn-dark" type="submit" name="button_update_picture" onclick='return check()'>Izmeni profilnu fotografiju</button><br><br><br>
         </div>
 
 

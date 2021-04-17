@@ -14,7 +14,7 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="add-user.css">
+    <link rel="stylesheet" href="home-sale.css">
 </head>
 
 <body>
@@ -52,44 +52,39 @@ while($row = mysqli_fetch_assoc($res)){
 
 
 <div class="container formSignUp">
-<h3>Dodavanje korisnika</h3><br>
+<h3>Dodavanje korisnika</h3>
 <form action="add-user.php" method="POST" enctype="multipart/form-data">
        <div class="form-group">
-          <label for="user_name">Ime:</label>
+          <label for="user_name">Ime</label>
           <input type="text" class="form-control" placeholder="Unesi ime korisnika:" name="user_name" required>
        </div>
 
         <div class="form-group">
-            <label for="user_surname">Prezime:</label>
+            <label for="user_surname">Prezime</label>
             <input type="text" class="form-control" placeholder="Unesi prezime korisnika:" name="user_surname" required>
         </div>
-        
+
         <div class="form-group">
-            <label for="username">Korisničko ime:</label>
+            <label for="username">Korisničko ime</label>
             <input type="text" class="form-control" placeholder="Unesi korisničko ime:" name="username" required>
         </div>
 
         <div class="form-group">
-            <label for="email">Email:</label>
+            <label for="email">Email</label>
             <input type="text" class="form-control" placeholder="Unesi e-mail adresu:" name="email" required>
         </div>
 
         <div class="form-group">
-            <label for="password1">Lozinka:</label>
+            <label for="password1">Lozinka</label>
             <input type="text" class="form-control" placeholder="Unesi lozinku:" name="password1" required>
         </div>
 
         <div class="form-group">
-            <label for="password2">Ponovi lozinku:</label>
+            <label for="password2">Ponovi lozinku</label>
             <input type="text" class="form-control" placeholder="Ponovi lozinku:" name="password2" required>
         </div>
 
-        <div class="form-group">
-            <label for="picture">Profilna fotografija:</label><br>
-            <input type="file" name="picture">
-        </div>
-
-        <label for="role">Korisnik je:</label>
+        <label for="role">Korisnik je</label>
         <div class="form-group">
            <select name="role" class="form-control">
               <option disabled selected>Izaberi ulogu: </option>
@@ -97,10 +92,12 @@ while($row = mysqli_fetch_assoc($res)){
               <option>Kupac</option>
             </select>
            </div>
-           <br>
-           <button class="btn" type="submit"  name="add_user" onclick='return checkUser()'>Potvrdi</button>
         </div>
         
+        <div class="form-group">
+            <label for="picture">Profilna fotografija</label><br>
+            <input type="file" name="picture">
+        </div>
 
         <?php
 include 'config.php';
@@ -174,6 +171,8 @@ if(isset($_POST['add_user'])) {
 }
 
 ?>
+
+       <button type="submit"  name="add_user" onclick='return checkUser()'>Potvrdi</button>
 
 </form>
 <p class="error-msg"><?php echo $msg; ?></p><br>
