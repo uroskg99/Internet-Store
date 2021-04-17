@@ -77,6 +77,37 @@ while($row = mysqli_fetch_assoc($res)){
     if($resultCheck > 0){
     while($row = mysqli_fetch_assoc($result)){    
 ?>
+<div class="slide-content">
+         <table>
+              <tr>
+                <td>
+                <?php 
+echo "<img src = 'profile-pics/".$row['profilepic'].'" />';
+?>
+                </td>
+                <td>
+                <div class="name">
+            <?php echo "<a href='product-page-salesman.php?name=".$row['name']."'class='name'>"; ?>
+            <p class="name"> <?php echo $row['name']; ?></p> <?php echo "</a>"; ?>
+            </div>
+                </td>
+              </tr>
+             </table>
+             <?php echo "<a href='delete-user-check.php?name=".$row['name']."'>"; ?>
+            <button class="btn" type="submit">Izbriši</button>
+            <?php echo "</a>"; ?>
+            <?php echo "<a href='update-user-check.php?name=".$row['name']."'>"; ?>
+            <button class="btn" type="submit">Izmeni</button>
+        </div>
+
+
+
+
+
+
+
+
+
     <div class="container">
         <div class="content">
             <div class="name">
