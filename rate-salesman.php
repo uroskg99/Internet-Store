@@ -16,13 +16,8 @@ if(!isset($_SESSION['role'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="rate-salesman.css">
+    <link rel="stylesheet" href="rate-salesmans.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <script src="https://use.fontawesome.com/0cf2c937f3.js"></script>
-    <link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
 
@@ -72,9 +67,31 @@ $row = mysqli_fetch_assoc($result_product);
 
 if(isset($_POST['not-rate'])){
     $value = "yes";
+    $bought = "";
     $qry = "UPDATE products SET `delievered` = '$value' WHERE id='$id' ";
+    $qry2 = "UPDATE products SET `customer` = '$bought' WHERE id='$id' ";
     mysqli_query($conn, $qry);
+    mysqli_query($conn, $qry2);
     header("location:orders.php");
+}
+
+if(isset($_POST['submit-rate'])){
+    $comment = $_POST['comment'];
+    $fromWho = $_SESSION['username'];
+    $toWho = $row['salesman'];
+    $productId = $id;
+
+    $rate = $_POST['rate'];
+
+    $sqlComm = "INSERT INTO comments (productId,fromWho,toWho,comment,rate) VALUES ('$productId', '$fromWho', '$toWho', '$comment', '$rate')";
+    $value = "yes";
+    $bought = "";
+    $qry = "UPDATE products SET `delievered` = '$value' WHERE id='$id' ";
+    $qry2 = "UPDATE products SET `customer` = '$bought' WHERE id='$id' ";
+    mysqli_query($conn, $qry);
+    mysqli_query($conn, $qry2);
+    mysqli_query($conn, $sqlComm);
+    header("location:profile.php");
 }
 
 ?>
@@ -98,18 +115,13 @@ if(isset($_POST['not-rate'])){
 
                 <form action="" method="POST">
                     <div class="form-group">
-                        <label for="comment">Dodajte vaš komentar:</label>
+                        <label for="comment" class="rate-label">Dodajte vaš komentar:</label>
                         <textarea type="text" class="form-control" name="comment" cols="55" rows="5" placeholder="Komentar" reuired></textarea>
                     </div>
                     <div class="rate-div">
-                        <p>Ocenite prodavca ocenom (1-5)</p>
-                        <div style="color:white;">
-                            <i class="fa fa-star fa-2x" data-index="0"></i>
-                            <i class="fa fa-star fa-2x" data-index="1"></i>
-                            <i class="fa fa-star fa-2x" data-index="2"></i>
-                            <i class="fa fa-star fa-2x" data-index="3"></i>
-                            <i class="fa fa-star fa-2x" data-index="4"></i>
-                            <br><br>
+                        <div class="form-group">
+                            <label for="rate" class="rate-label for-rate">Ocenite prodavca ocenom (1-5)</label>
+                            <input type="number" step="1" min="1" max="5" class="form-control input-rate" placeholder="Ovde unesite ocenu za prodavca" name="rate" required>
                         </div>
                         <button type="submit" class="rate" name="submit-rate">Sačuvaj utisak i ocenu</button>
                     </div>
@@ -140,61 +152,6 @@ function closePopup(){
 
 function checkDelievery(){
     return confirm('Da li ste sigurni da želite da potvrdite porudžbinu bez komentara i ocene, nema mogućnosti povratka.');
-}
-
-var ratedIndex = -1, uID = 0;
-
-$(document).ready(function () {
-    resetStarColors();
-
-    if (localStorage.getItem('ratedIndex') != null) {
-        setStars(parseInt(localStorage.getItem('ratedIndex')));
-        uID = localStorage.getItem('uID');
-    }
-
-    $('.fa-star').on('click', function () {
-    ratedIndex = parseInt($(this).data('index'));
-    localStorage.setItem('ratedIndex', ratedIndex);
-    saveToTheDB();
-    });
-
-    $('.fa-star').mouseover(function () {
-        resetStarColors();
-        var currentIndex = parseInt($(this).data('index'));
-        setStars(currentIndex);
-    });
-
-    $('.fa-star').mouseleave(function () {
-        resetStarColors();
-
-        if (ratedIndex != -1)
-            setStars(ratedIndex);
-    });
-});
-
-function saveToTheDB() {
-    $.ajax({
-        url: "index.php",
-        method: "POST",
-        dataType: 'json',
-        data: {
-            save: 1,
-            uID: uID,
-            ratedIndex: ratedIndex
-        }, success: function (r) {
-            uID = r.id;
-            localStorage.setItem('uID', uID);
-        }
-    });
-}
-
-function setStars(max) {
-    for (var i=0; i <= max; i++)
-        $('.fa-star:eq('+i+')').css('color', 'yellow');
-}
-
-function resetStarColors() {
-    $('.fa-star').css('color', '#CED4DA');
 }
 
 
