@@ -16,7 +16,7 @@ if(!isset($_SESSION['role'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="rate-salesmans.css">
+    <link rel="stylesheet" href="rate-salesman.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -72,7 +72,7 @@ if(isset($_POST['not-rate'])){
     $qry2 = "UPDATE products SET `customer` = '$bought' WHERE id='$id' ";
     mysqli_query($conn, $qry);
     mysqli_query($conn, $qry2);
-    header("location:orders.php");
+    header("location:salesman-profile.php?salesman-name=".$row['salesman']." ");
 }
 
 if(isset($_POST['submit-rate'])){
@@ -91,7 +91,7 @@ if(isset($_POST['submit-rate'])){
     mysqli_query($conn, $qry);
     mysqli_query($conn, $qry2);
     mysqli_query($conn, $sqlComm);
-    header("location:profile.php");
+    header("location:salesman-profile.php?salesman-name=".$row['salesman']." ");
 }
 
 ?>
@@ -123,7 +123,7 @@ if(isset($_POST['submit-rate'])){
                             <label for="rate" class="rate-label for-rate">Ocenite prodavca ocenom (1-5)</label>
                             <input type="number" step="1" min="1" max="5" class="form-control input-rate" placeholder="Ovde unesite ocenu za prodavca" name="rate" required>
                         </div>
-                        <button type="submit" class="rate" name="submit-rate">Sačuvaj utisak i ocenu</button>
+                        <button type="submit" class="rate" name="submit-rate" onclick='return checkDelievery()'>Sačuvaj utisak i ocenu</button>
                     </div>
                 </form>
             </div>
@@ -152,6 +152,10 @@ function closePopup(){
 
 function checkDelievery(){
     return confirm('Da li ste sigurni da želite da potvrdite porudžbinu bez komentara i ocene, nema mogućnosti povratka.');
+}
+
+function checkDelievery2(){
+    return confirm('Da li ste sigurni da želite da sačuvate utisak i ocenu za prodavca?');
 }
 
 

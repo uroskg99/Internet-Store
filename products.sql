@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2021 at 08:37 AM
+-- Generation Time: Apr 19, 2021 at 11:07 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -39,23 +39,23 @@ CREATE TABLE `products` (
   `delievery` varchar(100) NOT NULL,
   `salesman` varchar(100) NOT NULL,
   `customer` varchar(100) NOT NULL,
-  `sold` varchar(20) DEFAULT NULL
+  `sold` varchar(100) NOT NULL,
+  `delievered` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `location`, `type`, `description`, `price`, `currency`, `quantity`, `delievery`, `salesman`, `customer`, `sold`) VALUES
-(1, 'Bicikla Capriolo', 'Kragujevac', 'Bicikli', 'Lepa bicikla', 100, 'euro', '1', 'Brza posta', '', '', NULL),
-(2, 'Samsung Televizor', 'Kragujevac', 'TV i Video', 'Full HD, 1920x1080, KAO NOV', 10000, 'din', '1', 'Uzivo po uzecu', 'lj', 'Neko', 'yes'),
-(3, 'Samsung A8', 'Beograd', 'Mobilni telefoni', 'Perfektno ocuvan, bez ikakve ogrebotine, koriscen godinu dana.', 80, 'euro', '1', 'Postom', 'lj', '', NULL),
-(4, 'Sir od koze 5kg', 'Zlatibor', 'Domaca hrana', '5kg kvalitetnog sira od koze. Vrhunski ukus', 3500, 'din', '1', 'Po uzecu', '', '', NULL),
-(5, 'Televizor TESLA full hd', 'Backa Palanka', 'TV i Video', 'Kao nov, neostecen televizor od 30 inca.', 140, 'euro', '1', 'Post-express', '', '', NULL),
-(6, 'Hummel dres za rukomet', 'Cacak', 'Sport', 'Nenosen dres jer je preveliki, velicina XL.', 1500, 'din', '1', 'Post-express', '', '', NULL),
-(7, 'Elektricni trotinet', 'Beograd', 'Elektronika', 'Vrlo mocan elektricni trotinet, jedan od najjacih po snazi. Brzina do 30km/h. Baterija traje do 3h', 400, 'euro', '1', 'Po uzecu', 'Pera Peric', 'Neko', NULL),
-(22, 'Nista', 'Kragujevac', 'Antikviteti', 'Nista nista nista', 1200, 'din', '2', 'sasa', '', '', NULL),
-(23, 'm', 'Kg', 'Audio', 'Ljiljana Matic je najjaca', 1200, 'din', '3', '', '', '', NULL);
+INSERT INTO `products` (`id`, `name`, `location`, `type`, `description`, `price`, `currency`, `quantity`, `delievery`, `salesman`, `customer`, `sold`, `delievered`) VALUES
+(1, 'Bicikla Capriolo', 'Kragujevac', 'Bicikli', 'Lepa bicikla', 100, 'din', '1', '', 'akiveliki', '', '', ''),
+(2, 'Samsung Televizor', 'Kraljevo', 'TV i Video', 'Full HD, 1920x1080, KAO NOV', 10000, 'din', '1', '', 'akiveliki', '', '', ''),
+(3, 'Samsung A8', 'Beograd', 'Mobilni telefoni', 'Perfektno ocuvan, bez ikakve ogrebotine, koriscen godinu dana.', 80, 'din', '1', '', 'akiveliki', '', '', ''),
+(4, 'Sir od koze 5kg', 'Zlatibor', 'Domaca hrana', '5kg kvalitetnog sira od koze. Vrhunski ukus', 3500, 'din', '1', '', 'akiveliki', '', '', ''),
+(5, 'Televizor TESLA full hd', 'Backa Palanka', 'TV i Video', 'Kao nov, neostecen televizor od 30 inca.', 140, 'din', '1', '', 'akiveliki', '', 'yes', 'yes'),
+(6, 'Hummel dres za rukomet', 'Cacak', 'Sport', 'Nenosen dres jer je preveliki, velicina XL.', 1500, 'din', '1', 'Po uzeÄ‡u', 'akiveliki', 'Å¾arko', '', ''),
+(7, 'Elektricni trotinet', 'Beograd', 'Elektronika', 'Vrlo mocan elektricni trotinet, jedan od najjacih po snazi. Brzina do 30km/h. Baterija traje do 3h', 400, 'din', '1', 'Online', 'akiveliki', '', 'yes', 'yes'),
+(9, 'Mercedes G Klasa', 'Beograd', 'Automobili', 'Nova G klasa. Tamno sive boje, povoljna cena, 2019. godiste, presao 1000km.', 12000000, 'din', '1', 'Po uzeÄ‡u', 'akiveliki', '', 'yes', 'yes');
 
 --
 -- Indexes for dumped tables
@@ -75,7 +75,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

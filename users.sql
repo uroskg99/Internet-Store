@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2021 at 09:05 PM
+-- Generation Time: Apr 19, 2021 at 11:06 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -47,7 +47,7 @@ INSERT INTO `users` (`id`, `name`, `surname`, `username`, `email`, `password`, `
 (2, 'Aleksandar', 'Vucic', 'akiveliki', 'akiveliki@serbia.net', 'vucicuseceru', 'salesperson', 'blank-profile-pic.png'),
 (3, 'Nemanja', 'Bogdanovic', 'nciric99', 'nciric44222@gmail.com', 'dubravka', 'customer', 'prof.png'),
 (4, 'Jorgan', 'Hendikepovic', 'jorganxd', 'jorgan99@gmail.com', 'macka123', 'customer', 'Profilna.jpg'),
-(5, 'staki', 'stanojkov', 'Å¾arko', 'staki@gmail.com', 'staki123', 'customer', 'blank-profile-pic.png');
+(5, 'uros', 'stanojkov', 'Å¾arko', 'staki@gmail.com', 'staki123', 'customer', 'Profilna.jpg');
 
 --
 -- Indexes for dumped tables

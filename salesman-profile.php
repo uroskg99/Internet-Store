@@ -3,6 +3,10 @@
 include 'config.php';
 session_start();
 
+if(!isset($_SESSION['role'])){
+    header("location:sign.php");
+}
+
 $salesman_name = mysqli_real_escape_string($conn, $_GET['salesman-name']);
 $sql_sales = "SELECT * FROM users WHERE username='$salesman_name' ";
 $res_sales = mysqli_query($conn, $sql_sales);
@@ -91,8 +95,51 @@ while($row = mysqli_fetch_assoc($res)){
     </ul>
 </div> 
 
+<?php
+
+$comm_qry = "SELECT * FROM comments WHERE toWho = '$username_sales' ";
+$qry_res = mysqli_query($conn, $comm_qry);
+$comm_num = mysqli_num_rows($qry_res);
+
+?>
+
 <div class="comments">
     <h4>Ocene i komentari prodavca</h4>
+
+    <?php
+
+    if($comm_num == 0){
+        echo "<h3>Ovaj prodavac nema komentare</h3>";
+    }else{
+        echo "<h3>Ovaj prodavac ima ukupan broj utisaka: " . $comm_num . "</h3>";
+        while($row_comm = mysqli_fetch_array($qry_res)){
+            $productId = $row_comm['productId'];
+            $fromWho = $row_comm['fromWho'];
+            $toWho = $row_comm['toWho'];
+            $comment = $row_comm['comment'];
+            $rate = $row_comm['rate'];
+            
+            $prod_qry = "SELECT * FROM products WHERE id = '$productId' ";
+            $prod_res = mysqli_query($conn, $prod_qry);
+            $row_prod = mysqli_fetch_assoc($prod_res);
+
+            $prodName = $row_prod['name'];
+
+            ?>
+
+            <div class="rate-div">
+                <p>Ovaj komentar je ostavio kupac <span class="bold"><?php echo $fromWho; ?></span> za proizvod <span class="bold"><?php echo $prodName; ?></span></p>
+                <div>
+                    <p class="rate">Kupac je dao ocenu: <span class="bold"><?php echo $rate; ?></span></p>
+                    <p class="comm"><?php echo $comment; ?></p>
+                </div>
+            </div>
+
+            <?php
+        }
+    }
+
+    ?>
 </div>
 
 </body>

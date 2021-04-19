@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2021 at 11:06 PM
+-- Generation Time: Apr 19, 2021 at 11:07 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -24,39 +24,34 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products_gallery`
+-- Table structure for table `comments`
 --
 
-CREATE TABLE `products_gallery` (
+CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
-  `product` varchar(100) NOT NULL,
-  `picture` varchar(100) NOT NULL
+  `productId` int(11) NOT NULL,
+  `fromWho` varchar(50) NOT NULL,
+  `toWho` varchar(50) NOT NULL,
+  `comment` varchar(300) NOT NULL,
+  `rate` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `products_gallery`
+-- Dumping data for table `comments`
 --
 
-INSERT INTO `products_gallery` (`id`, `product`, `picture`) VALUES
-(1, 'Bicikla Capriolo', 'capriolo.jpg'),
-(2, 'Samsung Televizor', 'samsung-tv.jpg'),
-(3, 'Samsung Televizor', 'samsung-tv2.jpg'),
-(4, 'Samsung A8', 'samsung-a8.jpg'),
-(5, 'Sir od koze 5kg', 'sir-koza.jpg'),
-(6, 'Televizor TESLA full hd', 'tesla-tv.jpg'),
-(7, 'Hummel dres za rukomet', 'hummel-dres.jpg'),
-(8, 'Elektricni trotinet', 'elek-trotinet.jpg'),
-(11, 'Mercedes G Klasa', 'slika1.jpg'),
-(12, 'Mercedes G Klasa', 'slika2.jpg');
+INSERT INTO `comments` (`id`, `productId`, `fromWho`, `toWho`, `comment`, `rate`) VALUES
+(14, 5, 'Å¾arko', 'akiveliki', 'Lepa saradnja, nisam zadovoljan samo nacinom komunikacije prodavca.', 4),
+(15, 7, 'Å¾arko', 'akiveliki', 'Bravo', 5);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `products_gallery`
+-- Indexes for table `comments`
 --
-ALTER TABLE `products_gallery`
+ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -64,10 +59,10 @@ ALTER TABLE `products_gallery`
 --
 
 --
--- AUTO_INCREMENT for table `products_gallery`
+-- AUTO_INCREMENT for table `comments`
 --
-ALTER TABLE `products_gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
