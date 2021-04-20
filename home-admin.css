@@ -2,40 +2,72 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Ubuntu', sans-serif;
 }
 
-.navbar {
-    float: right;
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.product {
+    background-color: #E8F3F9;
+    height: 180px;
     padding: 0;
-    margin: 0;
-    margin-right: 11px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 100%;
+    margin-bottom: 60px;
+    margin-top: 30px;
+    overflow: auto;
 }
 
-.page-wrap {
-    margin-top: 40px;
-    width: 95%;
+.left {
+    font-weight: 700;
 }
 
-a {
-    color: inherit;
+.product:hover {
+    background-color: #d9eefa;
 }
 
 a:hover {
     text-decoration: none;
 }
 
-.row-column {
-    width: 90%;
-    margin: 0;
+.container {
     padding: 0;
 }
 
-.row {
-    max-width: 90%;
+.right-div {
+    float: right;
+}
+
+a {
+    padding: 0;
+}
+
+.column {
+    display: inline-block;
+    padding-right: 0px;
 }
 
 .right-div, .right-a {
     float: right;
+}
+
+.right-div {
+    display: inline-flex;
+    margin-top: 10px;
+}
+
+.row-column {
+    width: 100%;
+}
+
+.logo {
+    height: 66.5px;
+    margin-left: 15px;
+    margin-top: 5px;
 }
 
 .add-user{
@@ -74,4 +106,42 @@ a:hover {
 .container {
     max-width: 50%;
     margin-left: 120px;
+}
+
+.search-button2 {
+    background-color: #58b7eb;
+    border-radius: 4px;
+    height: 50px;
+    width: 300px;
+    font-style: bolder;
+    border: none;
+    color: white!important;
+    font-weight: 600;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.search {
+    margin-top: 50px;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.search-button:hover, .search-button2:hover {
+    background-color: #34a8e7;
+}
+.dropdown {
+    width: 60%;
+    margin-left: 50%;
+    transform: translate(-50%,0);
+    min-width: 300px;
+}
+
+.dropdown-button {
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.searchbox {
+    margin-top: 40px;
 }
