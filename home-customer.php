@@ -24,324 +24,162 @@ if(isset($_SESSION['role'])){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="home-customer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
 
+<?php        
+if(isset($_SESSION['username'])){
+$username = $_SESSION['username'];
+$qry = "SELECT * FROM users WHERE username='$username' ";
+$res = mysqli_query($conn, $qry);
+
+while($row = mysqli_fetch_assoc($res)){
+    $name = $row['name'];
+    $surname = $row['surname'];
+    $profilepic = $row['profilepic'];
+}
+?>
+<div class="row row-column">
+    <div class="col-md-12 column">
+        <a href="home-customer.php">
+            <img src="website-pics/logo.png" class="logo">
+        </a>
+    <div class="right-div">
+    <h5>Ulogovani ste kao <?php echo $_SESSION['username']; ?></h5>
+    <a class="nav-link dropdown-toggle right-a" href="#" id="navbardrop" data-toggle="dropdown">
+        <img src="profile-pics/<?php echo $profilepic; ?>" width="45px" height="45px" class="mini-profile">
+    </a>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="profile.php">Pogledaj Profil</a>
+        <a class="dropdown-item" href="edit-profile.php">Izmeni Profil</a>
+        <a class="dropdown-item" href="orders.php">Moje Porudžbine</a>
+        <a class="dropdown-item" href="logout.php">Odjavi se</a>
+    </div>
+</div>
+              
+<?php 
+}else{?>
 
 <div class="row row-column">
     <div class="col-md-12 column">
-        <a href="home-customer.php">Početna stranica</a>
+        <a href="home-customer.php">
+            <img src="website-pics/logo.png" class="logo">
+        </a>
         <div class="right-div">
-
-        <?php        
-        if(isset($_SESSION['username'])){
-        $username = $_SESSION['username'];
-        $qry = "SELECT * FROM users WHERE username='$username' ";
-        $res = mysqli_query($conn, $qry);
-
-            while($row = mysqli_fetch_assoc($res)){
-                $name = $row['name'];
-                $surname = $row['surname'];
-                $profilepic = $row['profilepic'];
-            }
-        ?>
-            <h5>Prijavljeni ste kao <?php echo $_SESSION['username']; ?>
-            <a class="nav-link dropdown-toggle right-a" href="#" id="navbardrop" data-toggle="dropdown">
-                <img src="profile-pics/<?php echo $profilepic; ?>" width="40px" height="40px">
-            </a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="profile.php">Pogledaj profil</a>
-                <a class="dropdown-item" href="edit-profile.php">Izmeni profil</a>
-                <a class="dropdown-item" href="orders.php">Moje porudžbine</a>
-                <a class="dropdown-item" href="logout.php">Odjavi se</a>
-            </div>
-        <?php 
-        }else{?>
             <h5><a href="sign.php">Prijavite se ovde</a></h5>
-        <?php
-        }        
-        ?>
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-6">
-        <div class="container search  center" style="width: 100%;">
-            <form action="" method="GET">
-                <input type="text" class="search-input" placeholder="Pretraži proizvode" name="input_search">
-                <button class="search-button" name="name_search">Pretraži</button>
-            </form>
-        </div>
-    </div>
-    <div class="col-md-6 price-col">
-        <div class="price-search center" style="width: 100%;">
-            <p>Sortiraj po ceni</p>
-            <form action="" method="GET"> 
-                <input type="radio" name="order" value="greater" checked>
-                <label for="greater">Od više ka nižoj</label><br>
+<?php
+}
+?>
 
-                <input type="radio" name="order" value="smaller">
-                <label for="smaller">Od niže ka višoj</label><br>
-
-                <button type="submit" class="search-button" name="price-search">Pretraži</button>
-            </form>
-        </div>
-    </div> 
+<div class="search">
+    <button class="search-button2" onclick='return openPopup()'>Klikni ovde da pretražiš proizvode</button>
 </div>
 
-<div class="row page-wrap">
-    <div class="col-md-2 left-side">
-        <ul class="list-group list-group-flush">
-        <form action="" method="POST">
-            <button class="simple" name="antc">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Antikviteti</p>
-                </li>
-                </a> 
-            </button>
+<div id="popup" class="hide">
+    <div class="popup">
+        <div class="popup-content">
+        <button id="close2" class="close" onclick='return closePopup()'>X</button>
 
-            <button class="simple" name="audio">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Audio</p>
-                </li>
-                </a> 
-            </button>
+            <div class="container searchbox">
+                <form action="" method="GET">
+                    <div class="form-group selectbox">
+                        <select class="form-control dropdown" id="sel1" name="list">
+                            <option disabled selected>Pretraži proizvode po kategoriji: </option>
+                            <option>Antikviteti</option>
+                            <option>Audio</option>
+                            <option>Automobili</option>
+                            <option>Bela tehnika</option>
+                            <option>Bicikli</option>
+                            <option>Domaća hrana</option>
+                            <option>Dvorište i bašta</option>
+                            <option>Elektronika</option>
+                            <option>Igračke i igre</option>
+                            <option>Knjige</option>
+                            <option>Kompjuteri</option>
+                            <option>Konzole i igrice</option>
+                            <option>Kućni ljubimci</option>
+                            <option>Mobilni telefoni</option>
+                            <option>Motocikli</option>
+                            <option>Muzika i instrumenti</option>
+                            <option>Nakit i satovi</option>
+                            <option>Nameštaj</option>
+                            <option>Nekretnine</option>
+                            <option>Odeća</option>
+                            <option>Sport</option>
+                            <option>TV i Video</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="search-button dropdown-button" name="category_search">Pretraži</button>
+                </form>
+            </div>
 
-            <button class="simple" name="auto">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Automobili</p>
-                </li>
-                </a> 
-            </button>
 
-            <button class="simple" name="bteh">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Bela tehnika</p>
-                </li>
-                </a> 
-            </button>
+            <div class="row search-row">
+                <div class="col-md-12">
+                    <div class="container search center" style="width: 100%;">
+                        <form action="" method="GET">
+                            <div class="input-group">
+                                <input type="text" class="search-input form-control" placeholder="Pretraži proizvode" name="input_search">
+                                <div class="input-group-appen">
+                                    <button class="search-button" name="name_search">Pretraži</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-            <button class="simple" name="bicikli">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Bicikli</p>
-                </li>
-                </a> 
-            </button>
+            <div class="sort-row">
+                <p>Sortiraj po ceni</p>
+                <form action="" method="GET"> 
+                    <input type="radio" name="order" value="greater" checked>
+                    <label for="greater">Od više ka nižoj</label><br>
 
-            <button class="simple" name="domhrana">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Domaća hrana</p>
-                </li>
-                </a> 
-            </button>
+                    <input type="radio" name="order" value="smaller">
+                    <label for="smaller">Od niže ka višoj</label><br>
 
-            <button class="simple" name="dvoriste">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Dvorište i bašta</p>
-                </li>
-                </a> 
-            </button>
+                    <button type="submit" class="search-button" name="price-search">Pretraži</button>
+                </form>
+            </div>
 
-            <button class="simple" name="elek">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Elektronika</p>
-                </li>
-                </a> 
-            </button>
+        </div>
+    </div>  
+</div>
 
-            <button class="simple" name="igracke">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Igračke i igre</p>
-                </li>
-                </a> 
-            </button>
-
-            <button class="simple" name="knjige">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Knjige</p>
-                </li>
-                </a> 
-            </button>
-
-            <button class="simple" name="komp">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Kompjuteri</p>
-                </li>
-                </a> 
-            </button>
-
-            <button class="simple" name="konz">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Konzole i igrice</p>
-                </li>
-                </a> 
-            </button>
-
-            <button class="simple" name="ljubimci">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Kućni ljubimci</p>
-                </li>
-                </a> 
-            </button>
-
-            <button class="simple" name="mobilni">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Mobilni telefoni</p>
-                </li>
-                </a> 
-            </button>
-
-            <button class="simple" name="motocikli">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Motocikli</p>
-                </li>
-                </a> 
-            </button>
-
-            <button class="simple" name="muzika">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Muzika i instrumenti</p>
-                </li>
-                </a> 
-            </button>
-
-            <button class="simple" name="nakit">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Nakit, satovi</p>
-                </li>
-                </a> 
-            </button>
-
-            <button class="simple" name="namestaj">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Nameštaj</p>
-                </li>
-                </a> 
-            </button>
-
-            <button class="simple" name="nekretnine">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Nekretnine</p>
-                </li>
-                </a> 
-            </button>
-
-            <button class="simple" name="odeca">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Odeća</p>
-                </li>
-                </a> 
-            </button>
-
-            <button class="simple" name="sport">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>Sport</p>
-                </li>
-                </a> 
-            </button>
-
-            <button class="simple" name="tv">
-                <a href="#">
-                <li class="list-group-item list-group-item-action">
-                    <p>TV i Video</p>
-                </li>
-                </a> 
-            </button>
-        </form>
-        </ul>
-    </div>
 
     <?php 
-        if(isset($_POST['antc'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'antikviteti' ";
-        }else if(isset($_POST['audio'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'audio' ORDER BY id DESC ";
-        }else if(isset($_POST['auto'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'automobili' ORDER BY id DESC ";
-        }else if(isset($_POST['bteh'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'bela tehnika' ORDER BY id DESC ";
-        }else if(isset($_POST['bicikli'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'Bicikli' ORDER BY id DESC ";
-        }else if(isset($_POST['domhrana'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'domaca hrana' ORDER BY id DESC ";
-        }else if(isset($_POST['dvoriste'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'dvoriste i basta' ORDER BY id DESC ";
-        }else if(isset($_POST['elek'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'elektronika' ORDER BY id DESC ";
-        }else if(isset($_POST['igracke'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'igracke i igre' ORDER BY id DESC ";
-        }else if(isset($_POST['knjige'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'knjige' ORDER BY id DESC ";
-        }else if(isset($_POST['komp'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'kompjuteri' ORDER BY id DESC ";
-        }else if(isset($_POST['konz'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'konzole i igrice' ORDER BY id DESC ";
-        }else if(isset($_POST['ljubimci'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'kucni ljubimci' ORDER BY id DESC ";
-        }else if(isset($_POST['mobilni'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'mobilni telefoni' ORDER BY id DESC ";
-        }else if(isset($_POST['motocikli'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'motocikli' ORDER BY id DESC ";
-        }else if(isset($_POST['muzika'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'muzika i instrumenti' ORDER BY id DESC ";
-        }else if(isset($_POST['nakit'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'nakit i satovi' ORDER BY id DESC ";
-        }else if(isset($_POST['namestaj'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'namestaj' ORDER BY id DESC ";
-        }else if(isset($_POST['nekretnine'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'nekretnine' ORDER BY id DESC ";
-        }else if(isset($_POST['odeca'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'odeca' ORDER BY id DESC ";
-        }else if(isset($_POST['sport'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'sport' ORDER BY id DESC ";
-        }else if(isset($_POST['tv'])){
-            $product_qry = "SELECT * FROM products WHERE type LIKE 'tv i video' ORDER BY id DESC ";
-        }else{
-            $product_qry = "SELECT * FROM products ORDER BY id DESC";
-        }
+
+        $product_qry = "SELECT * FROM products WHERE customer = '' AND sold = '' ORDER BY id DESC";
 
         if(isset($_GET['name_search'])){
             $search = mysqli_real_escape_string($conn, $_GET['input_search']);
-            $product_qry = "SELECT * FROM products WHERE name LIKE '%$search%' ORDER BY id DESC";
+            $product_qry = "SELECT * FROM products WHERE name LIKE '%$search%' AND customer = '' AND sold = '' ORDER BY id DESC";
         }
 
         if(isset($_GET['price-search'])){
             if(isset($_GET['order'])){
                 $order = $_GET['order'];
                 if($order == 'smaller'){
-                    $product_qry = "SELECT * FROM products ORDER BY `price`";
+                    $product_qry = "SELECT * FROM products WHERE customer = '' AND sold = '' ORDER BY `price`";
                 }else if($order == 'greater'){
-                    $product_qry = "SELECT * FROM products ORDER BY `price` DESC";
+                    $product_qry = "SELECT * FROM products WHERE customer = '' AND sold = '' ORDER BY `price` DESC";
                 }
             }
+        }
+
+        if(isset($_GET['category_search'])){
+            $search = mysqli_real_escape_string($conn, $_GET['list']);
+            $product_qry = "SELECT * FROM products WHERE type LIKE '%$search%' AND customer = '' AND sold = '' ORDER BY id DESC";
         }
 
         $product_res = mysqli_query($conn, $product_qry);
         $res = mysqli_num_rows($product_res);
     ?>
 
-    <div class="col-md-8">
     <?php 
     
     if($res == 0){
@@ -357,22 +195,40 @@ if(isset($_SESSION['role'])){
                 $prod_i = mysqli_fetch_array($prod_res);
                 $prod_final = $prod_i['picture'];
         ?>
-        <?php echo "<a href='product-page.php?name=".$product_data['name']."' style='text-decoration-color:white'>"; ?>
-            <div class="container product">
+        <div class="container product">
+            <?php echo "<a href='product-page.php?name=".$product_data['name']."' style='text-decoration-color:white'>"; ?>
                 <img src="products-pics/<?php echo $prod_final; ?>" width="" height="100%" class="product-pic">
-                <p class="left"><?php echo $product_data['name']; ?><span class="price">Cena: <?php echo $product_data['price'].$product_data['currency']; ?></span></p>
+                <div class="left"><?php echo $product_data['name']; ?></div>
+                <div class="price">Cena: <?php echo $product_data['price'].$product_data['currency']; ?></div>
                 <p class="right"><?php echo $product_data['location']; ?><span class="type2"><?php echo $product_data['type']; ?></span></p>
-            </div>
-        <?php echo "</a>"; 
+                <div><p class="desc"><?php echo $product_data['description']; ?><p></div>
+            <?php echo "</a>"; ?>
+        </div>
+        <?php
             }
         }
     }
+
     ?>
-    </div>
+    
 </div>
 
+
 <script type="text/javascript">
-    
+
+let popup = document.getElementById("popup");
+let body = document.getElementsByTagName("BODY")[0];
+
+function openPopup(){
+    popup.classList.remove("hide");
+    body.classList.add("no-scroll");
+}
+
+function closePopup(){
+    popup.classList.add("hide");
+    body.classList.remove("no-scroll");
+}
+
 </script>
 </body>
 </html>

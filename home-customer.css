@@ -2,22 +2,107 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Ubuntu', sans-serif;
 }
 
-.navbar {
-    float: right;
+.product {
+    background-color: #E8F3F9;
+    height: 180px;
     padding: 0;
-    margin: 0;
-    margin-right: 11px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 100%;
+    margin-bottom: 60px;
+    margin-top: 30px;
+    overflow: auto;
 }
 
-.search {
+.left {
+    font-weight: 700;
+}
+
+.product:hover {
+    background-color: #d9eefa;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.desc {
+    font-style: italic;
+    color: rgb(15, 87, 163);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.product-pic {
     float: left;
+    margin-right: 20px;
+    max-width: 220px;
+}
+
+.price {
+    color: red;
+    margin-left: 20px;
+}
+
+.type2 {
+    font-weight: 600;
+    margin-left: 20px;
+}
+
+.container {
+    padding: 0;
+}
+
+.right-div {
+    float: right;
+}
+
+a {
+    padding: 0;
+}
+
+.column {
+    display: inline-block;
+    padding-right: 0px;
+}
+
+.right-div, .right-a {
+    float: right;
+}
+
+.right-div {
+    display: inline-flex;
     margin-top: 10px;
 }
 
-.search-input {
-    height: 35px;
+.row-column {
+    width: 100%;
+}
+
+.logo {
+    height: 66.5px;
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+h5 {
+    color: rgb(15, 87, 163);
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.profile-pic {
+    border-radius: 50%;
+}
+
+.mini-profile {
+    border-radius: 50%;
+}
+
+.search-row {
+    margin-top: 30px;
 }
 
 .search-button {
@@ -31,138 +116,84 @@
     font-weight: 600;
 }
 
-.search-button:hover {
-    background-color: #34a8e7;
+.sort-row {
+    width: 50%;
+    margin: 30px 0;
+    margin-left: 50%;
+    transform: translate(-50%,0);
+    text-align: center;
 }
 
-.page-wrap {
-    margin-top: 40px;
-    width: 95%;
+.hide {
+    display: none;
 }
 
-.left-side {
-    width: 200px;
-}
-
-.list-group-item {
-    padding: 5px 0;
-    margin-left: 20px;
-    border: 0;
-    width: 90%;
-}
-
-.list-group-item:hover {
-    background-color: white;
-}
-
-a {
-    color: inherit;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-p {
-    margin: 0;
-    float: left;
-}
-
-.product {
-    background-color: #E8F3F9;
-    height: 100px;
-    margin: 10px 0;
-    padding: 0;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.product:hover {
-    background-color: #d9eefa;
-}
-
-.product-pic {
-    float: left;
-    margin-right: 20px;
-}
-
-.price {
-    color: #CF5100;
-    font-weight: bold;
-    margin: 0 20px;
-}
-
-.left {
-    float: left;
-}
-
-.right {
-    float: right;
-    margin-right: 20px;
-}
-
-.type {
-    margin-left: 8px;
-}
-
-.type2 {
-    font-weight: bold;
-    margin-left: 20px;
-}
-
-.simple {
-    background-color: white;
+.search-button2 {
+    background-color: #58b7eb;
+    border-radius: 4px;
+    height: 35px;
+    width: 300px;
+    font-style: bolder;
     border: none;
-    margin-left: 10px;
-    color: rgb(46, 46, 46);
-    width: 100%;
-}
-
-.simple:focus {
-    outline: none;
-}
-
-.column {
-    display: inline-block;
-}
-
-.right-div, .right-a {
-    float: right;
-}
-
-.price-search {
-    display: inline-flex;
-}
-
-.price-search p {
-    margin-top: 10px;
-    font-size: 20px;
-    margin-right: 20px;
-}
-
-.price-search button {
-    float: right;
-    position: relative;
-    left: 80%;
-    top: -50px;
-}
-
-.center {
-    position: relative;
-    left: 70%;
-    top: 0px;
+    color: white;
+    font-weight: 600;
+    margin-left: 50%;
     transform: translate(-50%, 0);
 }
 
-.row-column {
-    width: 90%;
-    margin: 0;
-    padding: 0;
+.search {
+    margin-top: 50px;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
 }
 
-.price-col {
-    max-width: 25%;
+.search-button:hover, .search-button2:hover {
+    background-color: #34a8e7;
 }
 
-.row {
-    max-width: 90%;
+.popup {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    height: 550px;
+    width: 70%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    min-width: 480px;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.dropdown {
+    width: 60%;
+    margin-left: 50%;
+    transform: translate(-50%,0);
+    min-width: 300px;
+}
+
+.dropdown-button {
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.searchbox {
+    margin-top: 40px;
 }

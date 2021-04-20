@@ -75,6 +75,7 @@ a:hover {
 
 .column {
     display: inline-block;
+    padding: 0;
 }
 
 .right-div, .right-a {
