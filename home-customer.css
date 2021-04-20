@@ -5,6 +5,11 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 .product {
     background-color: #E8F3F9;
     height: 180px;
