@@ -3,6 +3,14 @@
 include 'config.php';
 session_start();
 
+if(isset($_SESSION['role'])){
+    if($_SESSION['role'] == 'admin'){
+        header("location:home-admin.php");
+    }else if($_SESSION['role'] == 'customer'){
+        header("location:home-customer.php");
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
