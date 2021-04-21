@@ -3,8 +3,8 @@
 include 'config.php';
 session_start();
 
-$name = $_GET['name'];
-$sql = "DELETE FROM users WHERE name='$name'";
+$username = $_GET['username'];
+$sql = "DELETE FROM users WHERE username='$username'";
 $result = mysqli_query($conn, $sql);
 
 

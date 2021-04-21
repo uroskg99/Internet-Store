@@ -98,9 +98,10 @@ while($row = mysqli_fetch_assoc($res)){
         <div class="content">
         <br>
             <div class="name">
-            <p class="name"> <?php echo $r.": ".$row['name']; ?></p>
+            <?php echo "<a href='profile-user.php?username=".$row['username']."'class='name'>"; ?>
+            <p class="name"> <?php echo $row['username']; ?></p> <?php echo "</a>"; ?>
             </div>
-            <?php echo "<a href='delete-user-check.php?name=".$row['name']."'>"; ?>
+            <?php echo "<a href='delete-user-check.php?username=".$row['username']."'>"; ?>
             <button class="btn" type="submit">Izbriši</button>
             <?php echo "</a>"; ?>
             <?php echo "<a href='update-user-check.php?name=".$row['name']."'>"; ?>
