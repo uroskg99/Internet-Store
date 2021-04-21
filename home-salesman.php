@@ -68,7 +68,7 @@ while($row = mysqli_fetch_assoc($res)){
 
 <div class="search">
     <a href="next-salesman.php">
-    <button class="search-button2">Klikni ovde da pregledaš prodajne artikle</button>
+    <button class="search-button2">Klikni ovde da pregledaš dostupne proizvode</button>
     </a>
 </div>
 
@@ -80,6 +80,6 @@ while($row = mysqli_fetch_assoc($res)){
 
 <div class="search">
     <a href="view-product.php">
-    <button class="search-button2">Klikni ovde da pregledaš porudžbine</button>
+    <button class="search-button2">Klikni ovde da pošalješ porudžbine</button>
     </a>
 </div>

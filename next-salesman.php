@@ -84,9 +84,18 @@ while($row = mysqli_fetch_assoc($res)){
 
 
 <?php
-    $sql = "SELECT * FROM products WHERE salesman='$username' AND customer=''";
-    $result = mysqli_query($conn, $sql);
-    $resultCheck = mysqli_num_rows($result);
+    if(isset($_GET['name_search'])){
+        $search = mysqli_real_escape_string($conn, $_GET['input_search']);
+        $sql = "SELECT * FROM products WHERE name LIKE '%$search%' AND customer = '' AND salesman='$username' AND sold='' ORDER BY id DESC";
+        $result = mysqli_query($conn, $sql);
+        $resultCheck = mysqli_num_rows($result);
+    }
+    else{
+        $sql = "SELECT * FROM products WHERE salesman='$username' AND customer='' AND sold=''";
+        $result = mysqli_query($conn, $sql);
+        $resultCheck = mysqli_num_rows($result);
+    }
+
     if($resultCheck > 0){
     while($row = mysqli_fetch_assoc($result)){    
 ?>
