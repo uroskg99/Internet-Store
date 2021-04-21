@@ -104,7 +104,7 @@ while($row = mysqli_fetch_assoc($res)){
             <?php echo "<a href='delete-user-check.php?username=".$row['username']."'>"; ?>
             <button class="btn" type="submit">Izbriši</button>
             <?php echo "</a>"; ?>
-            <?php echo "<a href='update-user-check.php?name=".$row['name']."'>"; ?>
+            <?php echo "<a href='update-user-check.php?username=".$row['username']."'>"; ?>
             <button class="btn" type="submit">Izmeni</button>
             <?php echo "</a>"; ?>
         </div>

@@ -117,12 +117,12 @@ while($row = mysqli_fetch_assoc($res)){
 
 <?php
 $msg = '';
-$name = $_GET['name'];
+$username = $_GET['username'];
 $allowed = true;
 
 if(isset($_POST['button_update_user_name'])){
     $user_name = $_POST['update_user_name'];
-    $sql = "UPDATE users SET name = '$user_name' WHERE name = '$name'";
+    $sql = "UPDATE users SET name = '$user_name' WHERE username = '$username'";
     $result = mysqli_query($conn, $sql);
 
     if(empty(trim($user_name))){
@@ -140,7 +140,7 @@ if(isset($_POST['button_update_user_name'])){
 
 if(isset($_POST['button_update_user_surname'])){
     $user_surname = $_POST['update_user_surname'];
-    $sql = "UPDATE users SET surname = '$user_surname' WHERE name = '$name'";
+    $sql = "UPDATE users SET surname = '$user_surname' WHERE username = '$username'";
     $result = mysqli_query($conn, $sql);
 
     if(empty(trim($user_surname))){
@@ -175,7 +175,7 @@ if(isset($_POST['button_update_username'])){
     }
 
     if($allowed){
-        $sql = "UPDATE users SET username = '$user' WHERE name = '$name'";
+        $sql = "UPDATE users SET username = '$user' WHERE username = '$username'";
         $result = mysqli_query($conn, $sql);
     }
 }
@@ -200,7 +200,7 @@ if(isset($_POST['button_update_email'])){
     }
 
     if($allowed){
-        $sql = "UPDATE users SET email = '$email' WHERE name = '$name'";
+        $sql = "UPDATE users SET email = '$email' WHERE username = '$username'";
         $result = mysqli_query($conn, $sql);
     }
 }
@@ -224,7 +224,7 @@ if(isset($_POST['button_update_password'])){
     }
 
     if($allowed){
-        $sql = "UPDATE users SET password = '$password1' WHERE name = '$name'";
+        $sql = "UPDATE users SET password = '$password1' WHERE username = '$username'";
         $result = mysqli_query($conn, $sql);
         $msg = "Uspešno!";
     }
@@ -241,7 +241,7 @@ if(isset($_POST['button_update_role'])){
         $update_role = 'customer';
     }
 
-    $sql = "UPDATE users SET role = '$update_role' WHERE name = '$name'";
+    $sql = "UPDATE users SET role = '$update_role' WHERE username = '$username'";
     $result = mysqli_query($conn, $sql);
 
     if($result){
@@ -259,7 +259,7 @@ if(isset($_POST['button_update_picture'])){
     if(!move_uploaded_file($_FILES['picture']['tmp_name'], $target)){
         $msg = "Neuspešno!";
     }
-    $sql = "UPDATE users SET profilepic = '$picture' WHERE name = '$name'";
+    $sql = "UPDATE users SET profilepic = '$picture' WHERE username = '$username'";
     $result = mysqli_query($conn, $sql);
 
     if($result){
