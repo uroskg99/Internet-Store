@@ -154,3 +154,15 @@ h5 {
     top: 12%;
     transform: translate(-50%, 0);
 }
+
+.search-button {
+    background-color: #58b7eb;
+    border-radius: 4px;
+    height: 35px;
+    width: 90px;
+    font-style: bolder;
+    border: none;
+    color: white;
+    font-weight: 600;
+}
+

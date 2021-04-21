@@ -14,12 +14,13 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="home-sale.css">
+    <link rel="stylesheet" href="home-salesman.css">
 </head>
 
 <body>
 
-<?php
+<?php        
+if(isset($_SESSION['username'])){
 $username = $_SESSION['username'];
 $qry = "SELECT * FROM users WHERE username='$username' ";
 $res = mysqli_query($conn, $qry);
@@ -30,29 +31,43 @@ while($row = mysqli_fetch_assoc($res)){
     $profilepic = $row['profilepic'];
 }
 ?>
-
-<div class="row">
+<div class="row row-column">
     <div class="col-md-12 column">
-        <a href="home-customer.php">Početna stranica</a>
+        <a href="home-customer.php">
+            <img src="website-pics/logo.png" class="logo">
+        </a>
+    <div class="right-div">
+    <h5>Ulogovani ste kao <?php echo $_SESSION['username']; ?></h5>
+    <a class="nav-link dropdown-toggle right-a" href="#" id="navbardrop" data-toggle="dropdown">
+        <img src="profile-pics/<?php echo $profilepic; ?>" width="45px" height="45px" class="mini-profile">
+    </a>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="profile.php">Pogledaj Profil</a>
+        <a class="dropdown-item" href="edit-profile.php">Izmeni Profil</a>
+        <a class="dropdown-item" href="logout.php">Odjavi se</a>
+    </div>
+</div>
+              
+<?php 
+}else{?>
+
+<div class="row row-column">
+    <div class="col-md-12 column">
+        <a href="home-customer.php">
+            <img src="website-pics/logo.png" class="logo">
+        </a>
         <div class="right-div">
-            <h5>You are logged in as <?php echo $_SESSION['username']; ?>
-            <a class="nav-link dropdown-toggle right-a" href="#" id="navbardrop" data-toggle="dropdown">
-                <img src="profile-pics/<?php echo $profilepic; ?>" width="40px" height="40px">
-            </a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="profile.php">View Profile</a>
-                <a class="dropdown-item" href="edit-profile.php">Edit Profile</a>
-                <a class="dropdown-item" href="orders.php">My orders</a>
-                <a class="dropdown-item" href="logout.php">Logout</a>
-            </div>
+            <h5><a href="sign.php">Prijavite se ovde</a></h5>
         </div>
     </div>
 </div>
-</div>
+<?php
+}
+?>
 
 
-<div class="container formSignUp">
-<h3>Postavljanje oglasa</h3>
+<div class="container formSignUp"><br>
+<h3>Postavljanje oglasa</h3><br>
 <form action="upload-product-check.php" method="POST" enctype="multipart/form-data">
        <div class="form-group">
           <label for="product_name">Naziv oglasa</label>
@@ -118,7 +133,7 @@ while($row = mysqli_fetch_assoc($res)){
         </div>
         
        <input type='file' name='file[]' id='file' multiple> 
-       <button type="submit"  name="add_product" onclick='return checkOrder()'>Potvrdi</button>
+       <button type="submit" class="btn" name="add_product" onclick='return checkOrder()'>Potvrdi</button>
 
 </form>
 </div>

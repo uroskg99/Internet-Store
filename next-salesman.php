@@ -3,14 +3,6 @@
 include 'config.php';
 session_start();
 
-if(isset($_SESSION['role'])){
-    if($_SESSION['role'] == 'salesperson'){
-        header("location:home-salesman.php");
-    }else if($_SESSION['role'] == 'customer'){
-        header("location:home-customer.php");
-    }
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +15,7 @@ if(isset($_SESSION['role'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="home-admin.css">
+    <link rel="stylesheet" href="home-salesman.css">
 </head>
 <body>
 
@@ -41,10 +33,12 @@ while($row = mysqli_fetch_assoc($res)){
 ?>
 <div class="row row-column">
     <div class="col-md-12 column">
-        <a href="home-customer.php">
+        <a href="home-salesman.php">
             <img src="website-pics/logo.png" class="logo">
         </a>
+        
     <div class="right-div">
+    
     <h5>Ulogovani ste kao <?php echo $_SESSION['username']; ?></h5>
     <a class="nav-link dropdown-toggle right-a" href="#" id="navbardrop" data-toggle="dropdown">
         <img src="profile-pics/<?php echo $profilepic; ?>" width="45px" height="45px" class="mini-profile">
@@ -73,38 +67,40 @@ while($row = mysqli_fetch_assoc($res)){
 }
 ?>
 
-<div class="search">
-    <a href="add-user.php">
-    <button class="search-button2">Klikni ovde da dodaš korisnika</button>
-    </a>
-</div>
+<div class="row search-row">
+                <div class="col-md-12">
+                    <div class="container search center" style="width: 100%;">
+                        <form action="" method="GET">
+                            <div class="input-group">
+                                <input type="text" class="search-input form-control" placeholder="Pretraži proizvode" name="input_search">
+                                <div class="input-group-appen">
+                                    <button class="search-button" name="name_search">Pretraži</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
 
 <?php
-    $r = "Admin";
-    $sql = "SELECT * FROM users WHERE role!='admin'";
+    $sql = "SELECT * FROM products WHERE salesman='$username' AND customer=''";
     $result = mysqli_query($conn, $sql);
     $resultCheck = mysqli_num_rows($result);
     if($resultCheck > 0){
     while($row = mysqli_fetch_assoc($result)){    
-        if($row['role']=='customer'){
-            $r = 'Kupac';
-        }
-        else if($row['role']=='salesperson'){
-            $r = 'Prodavac';
-        }
 ?>
-
     <div class="container">
         <div class="content">
-        <br>
             <div class="name">
-            <p class="name"> <?php echo $r.": ".$row['name']; ?></p>
+            <?php echo "<a href='product-page-salesman.php?name=".$row['name']."'class='name'>"; ?>
+            <p class="name"> <?php echo $row['name']; ?></p> <?php echo "</a>"; ?>
             </div>
-            <?php echo "<a href='delete-user-check.php?name=".$row['name']."'>"; ?>
-            <button class="btn" type="submit">Izbriši</button>
+            <?php echo "<a href='delete-product-check.php?name=".$row['name']."'>"; ?>
+            <button class="btn btn-dark" type="submit">Izbriši</button>
             <?php echo "</a>"; ?>
-            <?php echo "<a href='update-user-check.php?name=".$row['name']."'>"; ?>
-            <button class="btn" type="submit">Izmeni</button>
+            <?php echo "<a href='update-product-check.php?name=".$row['name']."'>"; ?>
+            <button class="btn btn-dark" type="submit">Izmeni</button><br><br>
             <?php echo "</a>"; ?>
         </div>
     </div>
