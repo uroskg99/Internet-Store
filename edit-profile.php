@@ -41,14 +41,10 @@ while($row = mysqli_fetch_assoc($res)){
 if(isset($_POST['update_info'])){
     $name = $_POST['new_name'];
     $surname = $_POST['new_surname'];
-    $username = $_POST['new_username'];
-    $email = $_POST['new_email'];
-    $_SESSION['username'] = $username;
 
     $sql = "UPDATE users SET `name` = '$name',
-    `surname` = '$surname',
-    `username` = '$username',
-    `email` = '$email' WHERE username='$username_prim'";
+    `surname` = '$surname'
+    WHERE username='$username_prim'";
 
     $res = mysqli_query($conn, $sql);
 
@@ -130,14 +126,6 @@ if(isset($_POST['update_profilepic'])){
                     <div class="form-group">
                         <label for="surname">Prezime</label>
                         <input type="text" class="form-control" value=<?php echo $surname;?> name="new_surname" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" class="form-control" value=<?php echo $username;?> name="new_username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" value=<?php echo $email;?> name="new_email" required>
                     </div>
                     <button class="btn btn-primary" type="submit" name="update_info" onclick='return checkEdit()'>Ažuriraj lične podatke</button>
                 </form>
