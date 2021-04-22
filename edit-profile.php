@@ -43,6 +43,7 @@ if(isset($_POST['update_info'])){
     $surname = $_POST['new_surname'];
     $username = $_POST['new_username'];
     $email = $_POST['new_email'];
+    $_SESSION['username'] = $username;
 
     $sql = "UPDATE users SET `name` = '$name',
     `surname` = '$surname',
