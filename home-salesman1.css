@@ -9,6 +9,7 @@
 html, body {
     max-width: 100%;
     overflow-x: hidden;
+    min-width: 530px;
 }
 
 
@@ -29,8 +30,12 @@ a:hover {
 }
 
 .container {
-    padding: 0;
+    position: relative;
+    max-width: 50%;
+    margin: 0 auto;
+    margin-bottom: 50px;
 }
+
 
 .right-div {
     float: right;
@@ -64,23 +69,6 @@ a {
     margin-top: 5px;
 }
 
-.add-user{
-    background-color: #58b7eb;
-    border-radius: 4px;
-    height: 40px;
-    width: 90px;
-    font-style: bolder;
-    border: none;
-    color: white;
-    font-weight: 600;
-}
-
-.add-user:hover {
-    background-color: #34a8e7;
-    color: white;
-}
-
-
 .btn {
     background-color: #58b7eb;
     border-radius: 4px;
@@ -97,33 +85,6 @@ a {
     color: white;
 }
 
-.container {
-    max-width: 50%;
-    margin-left: 120px;
-}
-
-.search-button2 {
-    background-color: #58b7eb;
-    border-radius: 4px;
-    height: 50px;
-    width: 300px;
-    font-style: bolder;
-    border: none;
-    color: white!important;
-    font-weight: 600;
-    margin-left: 50%;
-    transform: translate(-50%, 0);
-}
-
-.search {
-    margin-top: 50px;
-    margin-left: 50%;
-    transform: translate(-50%, 0);
-}
-
-.search-button:hover, .search-button2:hover {
-    background-color: #34a8e7;
-}
 .dropdown {
     width: 60%;
     margin-left: 50%;
@@ -146,23 +107,15 @@ h5 {
     margin-top: 15px;
 }
 
-.error-msg {
-    position: absolute;
-    color: red!important;
+h3{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
     font-weight: bold;
-    left:50%;
-    top: 12%;
-    transform: translate(-50%, 0);
+    color:#34a8e7;
 }
 
-.search-button {
-    background-color: #58b7eb;
-    border-radius: 4px;
-    height: 35px;
-    width: 90px;
-    font-style: bolder;
-    border: none;
-    color: white;
+label {
     font-weight: 600;
+    color: #34a8e7;
 }
-

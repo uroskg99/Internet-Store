@@ -43,7 +43,7 @@ $fileCount = count($_FILES['file']['name']);
     }
 
 if($res){
-    header("Location: home-salesman.php?success=Added successful");
+    header("Location: home-salesman1.php?success=Added successful");
     exit(); 
 }else{
     header("Location: upload-product.php?error=Error");

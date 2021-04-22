@@ -32,7 +32,7 @@ while($row = mysqli_fetch_assoc($res)){
 ?>
 <div class="row row-column">
     <div class="col-md-12 column">
-        <a href="home-customer.php">
+        <a href="home-salesman1.php">
             <img src="website-pics/logo.png" class="logo">
         </a>
     <div class="right-div">
@@ -41,9 +41,10 @@ while($row = mysqli_fetch_assoc($res)){
         <img src="profile-pics/<?php echo $profilepic; ?>" width="45px" height="45px" class="mini-profile">
     </a>
     <div class="dropdown-menu">
-        <a class="dropdown-item" href="profile.php">Pogledaj Profil</a>
-        <a class="dropdown-item" href="edit-profile.php">Izmeni Profil</a>
-        <a class="dropdown-item" href="orders.php">Moje Porudžbine</a>
+        <a class="dropdown-item" href="salesman-profile.php">Pogledaj Profil</a>
+        <a class="dropdown-item" href="edit-profile-salesman.php">Izmeni Profil</a>
+        <a class="dropdown-item" href="salesman-products.php">Moji proizvodi</a>
+        <a class="dropdown-item" href="salesman-send.php">Čeka se za slanje</a>
         <a class="dropdown-item" href="logout.php">Odjavi se</a>
     </div>
 </div>
@@ -130,7 +131,6 @@ $result_gallery = mysqli_query($conn, $sql_gallery);
             <br>
             <p><?php echo $description . '. Lokacija je: ' . $location; ?></p>
             <p>Vlasnik ovog proizvoda je:
-                <?php echo "<a href='salesman-profile.php?salesman-name=". $salesman ."' style='text-decoration-color:white'>"; ?>
                     <span class="salesman">
                         <?php echo $salesman; ?>
                     </span>
@@ -140,30 +140,11 @@ $result_gallery = mysqli_query($conn, $sql_gallery);
     </div>
     <?php
 
+?>
+<?php
 
-if(isset($_POST['order-online'])){
-    $online = 'Online';
-    $customer_name = $_SESSION['username'];
+    echo '<p class="p-info">Ulogujte se kao kupac da biste imali mogućnost kupovine proizvoda!</p>';
 
-    $product_sql = "UPDATE products SET `customer` = '$customer_name', `delievery` = '$online' WHERE name='$name' ";
-    $result_order = mysqli_query($conn, $product_sql);
-
-    if($result_order){
-        header("location:orders.php");
-    }
-}
-
-if(isset($_POST['basic-order'])){
-    $pouzecu = 'Po uzeću';
-    $customer_name = $_SESSION['username'];
-
-    $product_sql = "UPDATE products SET customer = '$customer_name', `delievery` = '$pouzecu' WHERE name='$name' ";
-    $result_order = mysqli_query($conn, $product_sql);
-
-    if($result_order){
-        header("location:orders.php");
-    }
-}
 ?>
 
 </body>

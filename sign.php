@@ -51,7 +51,7 @@ if(isset($_SESSION['role'])){
                     }else if($role == "customer"){
                         header("location:home-customer.php");
                     }else{
-                        header("location:home-salesman.php");
+                        header("location:home-salesman1.php");
                     }  
                 }else{
                     $msg = 'Pogrešno ste uneli vaše informacije ili šifru!';

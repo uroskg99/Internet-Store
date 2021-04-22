@@ -121,6 +121,17 @@ h5 {
     font-weight: 600;
 }
 
+.search-button1 {
+    background-color: red;
+    border-radius: 4px;
+    height: 35px;
+    width: 90px;
+    font-style: bolder;
+    border: none;
+    color: white;
+    font-weight: 600;
+}
+
 .sort-row {
     width: 50%;
     margin: 30px 0;
@@ -152,7 +163,7 @@ h5 {
     transform: translate(-50%, 0);
 }
 
-.search-button:hover, .search-button2:hover {
+.search-button:hover, .search-button1:hover, .search-button2:hover {
     background-color: #34a8e7;
 }
 
@@ -201,4 +212,9 @@ h5 {
 
 .searchbox {
     margin-top: 40px;
+}
+
+.buttons {
+    margin-left: 50px;
+    margin-bottom: 50px;
 }

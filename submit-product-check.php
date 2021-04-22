@@ -9,10 +9,10 @@ $result = mysqli_query($conn, $sql);
 
 
 if($result > 0){
-    header("Location: view-product.php?success=Submitted");
+    header("Location: salesman-send.php?success=Submitted");
     exit(); 
 }
 else{
-    header("Location: view-product.php?error=Error");
+    header("Location: salesman-send.php?error=Error");
     exit(); 
 }

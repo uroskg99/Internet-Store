@@ -1,5 +1,4 @@
 <?php
-
 include 'config.php';
 session_start();
 
@@ -22,7 +21,8 @@ if(isset($_SESSION['role'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="home-salesman.css">
+    <link rel="stylesheet" href="home-salesman1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -41,7 +41,7 @@ while($row = mysqli_fetch_assoc($res)){
 ?>
 <div class="row row-column">
     <div class="col-md-12 column">
-        <a href="home-customer.php">
+        <a href="home-salesman1.php">
             <img src="website-pics/logo.png" class="logo">
         </a>
     <div class="right-div">
@@ -52,6 +52,8 @@ while($row = mysqli_fetch_assoc($res)){
     <div class="dropdown-menu">
         <a class="dropdown-item" href="profile.php">Pogledaj Profil</a>
         <a class="dropdown-item" href="edit-profile.php">Izmeni Profil</a>
+        <a class="dropdown-item" href="orders.php">Moji proizvodi</a>
+        <a class="dropdown-item" href="orders.php">Čeka se za slanje</a>
         <a class="dropdown-item" href="logout.php">Odjavi se</a>
     </div>
 </div>
@@ -75,7 +77,7 @@ while($row = mysqli_fetch_assoc($res)){
 
 
 <div class="container formSignUp"><br>
-<h3>Postavljanje oglasa</h3><br>
+<h3>Ovde možete postaviti oglas</h3><br>
 <form action="upload-product-check.php" method="POST" enctype="multipart/form-data">
        <div class="form-group">
           <label for="product_name">Naziv oglasa</label>
@@ -128,7 +130,7 @@ while($row = mysqli_fetch_assoc($res)){
           </div>
           <div class="col-sm-3">
            <select name="currency" class="form-control">
-              <option disabled selected>Izaberi valutu: </option>
+              <option disabled selected>Valuta: </option>
               <option>euro</option>
               <option>din</option>
             </select>
@@ -137,13 +139,14 @@ while($row = mysqli_fetch_assoc($res)){
 
         <div class="form-group">
             <label for="quantity">Količina</label>
-            <input type="text" class="form-control" placeholder="Unesi količinu:" name="quantity" required>
+            <input type="text" class="form-control" placeholder="Unesi količinu:" name="quantity" required><br>
         </div>
         
-       <input type='file' name='file[]' id='file' multiple> 
+       <input type='file' name='file[]' id='file' multiple>
        <button type="submit" class="btn" name="add_product" onclick='return checkOrder()'>Potvrdi</button>
 
 </form>
+
 </div>
 </body>
 </html>
@@ -153,3 +156,4 @@ while($row = mysqli_fetch_assoc($res)){
         return confirm('Da li ste sigurni da želite da postavite ovaj oglas?');
     }
 </script>
+

@@ -11,10 +11,10 @@ $sql = "DELETE FROM products_gallery WHERE product='$name'";
 $result = mysqli_query($conn, $sql);
 
 if($result > 0){
-    header("Location: home-salesman.php?success=Deleted");
+    header("Location: salesman-products.php?success=Deleted");
     exit(); 
 }
 else{
-    header("Location: home-salesman.php?error=Error");
+    header("Location: salesman-products.php?error=Error");
     exit(); 
 }
