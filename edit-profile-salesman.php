@@ -52,7 +52,7 @@ if(isset($_POST['update_info'])){
     $res = mysqli_query($conn, $sql);
 
     if($res){
-        header("location:profile.php");
+        header("location:salesman-profile.php");
     }
 }
 
@@ -74,7 +74,7 @@ if(isset($_POST['update_pass'])){
         $res = mysqli_query($conn, $sql);
 
         if($res){
-            header("location:profile.php");
+            header("location:salesman-profile.php");
         }
     }
 }
@@ -91,7 +91,7 @@ if(isset($_POST['update_profilepic'])){
     $res = mysqli_query($conn, $sql);
 
     if($res){
-        header("location:profile.php");
+        header("location:salesman-profile.php");
     }
 }
 
