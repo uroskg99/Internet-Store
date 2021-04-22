@@ -19,11 +19,11 @@ if(isset($_SESSION['role'])){
     <title>Internet Store</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="home-customer.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -42,7 +42,7 @@ while($row = mysqli_fetch_assoc($res)){
 ?>
 <div class="row row-column">
     <div class="col-md-12 column">
-        <a href="salesman-products.php">
+        <a href="salesman-send.php">
             <img src="website-pics/logo.png" class="logo">
         </a>
     <div class="right-div">
@@ -51,11 +51,12 @@ while($row = mysqli_fetch_assoc($res)){
         <img src="profile-pics/<?php echo $profilepic; ?>" width="45px" height="45px" class="mini-profile">
     </a>
     <div class="dropdown-menu">
-        <a class="dropdown-item" href="salesman-profile.php">Pogledaj Profil</a>
-        <a class="dropdown-item" href="edit-profile.php">Izmeni Profil</a>
-        <a class="dropdown-item" href="home-salesman1.php">Početna stranica</a>
-        <a class="dropdown-item" href="salesman-products.php">Moji proizvodi</a>
-        <a class="dropdown-item" href="logout.php">Odjavi se</a>
+            <a class="dropdown-item" href="home-salesman1.php">Početna stranica</a>
+            <a class="dropdown-item" href="salesman-profile.php">Pogledaj Profil</a>
+            <a class="dropdown-item" href="edit-profile-salesman.php">Izmeni Profil</a>
+            <a class="dropdown-item" href="salesman-products.php">Moji proizvodi</a>
+            <a class="dropdown-item" href="salesman-send.php">Čeka se za slanje</a>
+            <a class="dropdown-item" href="logout.php">Odjavi se</a>
     </div>
 </div>
               

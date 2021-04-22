@@ -39,7 +39,7 @@ while($row = mysqli_fetch_assoc($res)){
 ?>
 <div class="row row-column">
     <div class="col-md-12 column">
-        <a href="home-customer.php">
+        <a href="home-salesman1.php">
             <img src="website-pics/logo.png" class="logo">
         </a>
         <div class="right-div">
@@ -47,13 +47,14 @@ while($row = mysqli_fetch_assoc($res)){
             <a class="nav-link dropdown-toggle right-a" href="#" id="navbardrop" data-toggle="dropdown">
                 <img src="profile-pics/<?php echo $profilepic; ?>" width="45px" height="45px" class="mini-profile">
             </a>
-            
-        <div class="dropdown-menu">
-        <a class="dropdown-item" href="edit-profile-salesman.php">Izmeni Profil</a>
-        <a class="dropdown-item" href="salesman-products.php">Moji proizvodi</a>
-        <a class="dropdown-item" href="salesman-send.php">Čeka se za slanje</a>
-        <a class="dropdown-item" href="logout.php">Odjavi se</a>
-    </div>
+            <div class="dropdown-menu">
+            <a class="dropdown-item" href="home-salesman1.php">Početna stranica</a>
+            <a class="dropdown-item" href="salesman-profile.php">Pogledaj Profil</a>
+            <a class="dropdown-item" href="edit-profile-salesman.php">Izmeni Profil</a>
+            <a class="dropdown-item" href="salesman-products.php">Moji proizvodi</a>
+            <a class="dropdown-item" href="salesman-send.php">Čeka se za slanje</a>
+            <a class="dropdown-item" href="logout.php">Odjavi se</a>
+            </div>
         </div>
     </div>
 </div>

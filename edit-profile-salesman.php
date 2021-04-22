@@ -41,13 +41,10 @@ while($row = mysqli_fetch_assoc($res)){
 if(isset($_POST['update_info'])){
     $name = $_POST['new_name'];
     $surname = $_POST['new_surname'];
-    $username = $_POST['new_username'];
-    $email = $_POST['new_email'];
 
     $sql = "UPDATE users SET `name` = '$name',
-    `surname` = '$surname',
-    `username` = '$username',
-    `email` = '$email' WHERE username='$username_prim'";
+    `surname` = '$surname'
+    WHERE username='$username_prim'";
 
     $res = mysqli_query($conn, $sql);
 
@@ -98,7 +95,7 @@ if(isset($_POST['update_profilepic'])){
 ?>
 <div class="row row-column">
     <div class="col-md-12 column">
-        <a href="home-customer.php">
+        <a href="home-salesman1.php">
             <img src="website-pics/logo.png" class="logo">
         </a>
         <div class="right-div">
@@ -107,10 +104,12 @@ if(isset($_POST['update_profilepic'])){
                 <img src="profile-pics/<?php echo $profilepic; ?>" width="45px" height="45px" class="mini-profile">
             </a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="salesman-profile.php">Pogledaj Profil</a>
-              <a class="dropdown-item" href="salesman-products.php">Moji proizvodi</a>
-              <a class="dropdown-item" href="salesman-send.php">Čeka se za slanje</a>
-              <a class="dropdown-item" href="logout.php">Odjavi se</a>
+             <a class="dropdown-item" href="home-salesman1.php">Početna stranica</a>
+             <a class="dropdown-item" href="salesman-profile.php">Pogledaj Profil</a>
+             <a class="dropdown-item" href="edit-profile-salesman.php">Izmeni Profil</a>
+             <a class="dropdown-item" href="salesman-products.php">Moji proizvodi</a>
+             <a class="dropdown-item" href="salesman-send.php">Čeka se za slanje</a>
+             <a class="dropdown-item" href="logout.php">Odjavi se</a>
             </div>
         </div>
     </div>
@@ -129,14 +128,6 @@ if(isset($_POST['update_profilepic'])){
                     <div class="form-group">
                         <label for="surname">Prezime</label>
                         <input type="text" class="form-control" value=<?php echo $surname;?> name="new_surname" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" class="form-control" value=<?php echo $username;?> name="new_username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" value=<?php echo $email;?> name="new_email" required>
                     </div>
                     <button class="btn btn-primary" type="submit" name="update_info" onclick='return checkEdit()'>Ažuriraj lične podatke</button>
                 </form>
