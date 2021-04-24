@@ -15,11 +15,17 @@ html, body {
     height: 180px;
     padding: 0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.637);
-    width: 100%;
-    margin-bottom: 60px;
-    margin-top: 30px;
+    width: 60%;
+    margin-bottom: 55px;
+    margin-top: 45px;
     overflow: auto;
 }
+
+.name{
+    font-weight: 700;
+    font-size: 17px;
+}
+
 
 .left {
     font-weight: 700;
@@ -168,26 +174,6 @@ h5 {
     background-color: #34a8e7;
 }
 
-.popup {
-    background-color: rgba(0, 0, 0, 0.6);
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.popup-content {
-    height: 550px;
-    width: 70%;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    position: relative;
-    min-width: 480px;
-}
 
 .no-scroll {
     overflow: hidden;
@@ -216,6 +202,6 @@ h5 {
 }
 
 .buttons {
-    margin-left: 50px;
-    margin-bottom: 30px;
+    margin-left: 252px;
+    margin-bottom: 20px;
 }
