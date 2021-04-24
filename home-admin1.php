@@ -106,9 +106,8 @@ while($row = mysqli_fetch_assoc($res)){
         ?>
         <div class="container product">
                 <img src="profile-pics/<?php echo $product_data['profilepic']; ?>" width="" height="100%" class="product-pic">
-                <br><p class="name">Korisnik <?php echo $product_data['name']." ".$product_data['surname']; ?>
-                <div class="price"><?php echo $r; ?></div><br>
                 <div class="left">Korisničko ime: <?php echo "@".$product_data['username']; ?></div>
+                <div class="price"><?php echo $r; ?></div><br>
                 <p class="left">Email: <?php echo $product_data['email']; ?>
         </div>
 

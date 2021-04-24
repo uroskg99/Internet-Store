@@ -12,7 +12,7 @@ html, body {
 
 .product {
     background-color: rgb(229, 226, 226);
-    height: 180px;
+    height: 120px;
     padding: 0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.637);
     width: 60%;
@@ -23,7 +23,7 @@ html, body {
 
 .name{
     font-weight: 700;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 
@@ -56,6 +56,8 @@ a:hover {
     color: red;
     margin-left: 20px;
     font-weight: bold;
+    font-size: 15px;
+    margin-top: 0px;
 }
 
 .type2 {
