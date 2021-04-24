@@ -49,7 +49,7 @@ if(isset($_POST['update_info'])){
     $res = mysqli_query($conn, $sql);
 
     if($res){
-        header("location:salesman-profile.php");
+        header("location:salesman-profile1.php");
     }
 }
 
@@ -71,7 +71,7 @@ if(isset($_POST['update_pass'])){
         $res = mysqli_query($conn, $sql);
 
         if($res){
-            header("location:salesman-profile.php");
+            header("location:salesman-profile1.php");
         }
     }
 }
@@ -88,7 +88,7 @@ if(isset($_POST['update_profilepic'])){
     $res = mysqli_query($conn, $sql);
 
     if($res){
-        header("location:salesman-profile.php");
+        header("location:salesman-profile1.php");
     }
 }
 
@@ -105,7 +105,7 @@ if(isset($_POST['update_profilepic'])){
             </a>
             <div class="dropdown-menu">
              <a class="dropdown-item" href="home-salesman1.php">Početna stranica</a>
-             <a class="dropdown-item" href="salesman-profile.php">Pogledaj Profil</a>
+             <a class="dropdown-item" href="salesman-profile1.php">Pogledaj Profil</a>
              <a class="dropdown-item" href="edit-profile-salesman.php">Izmeni Profil</a>
              <a class="dropdown-item" href="salesman-products.php">Moji proizvodi</a>
              <a class="dropdown-item" href="salesman-send.php">Čeka se za slanje</a>

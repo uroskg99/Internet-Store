@@ -52,7 +52,7 @@ while($row = mysqli_fetch_assoc($res)){
     </a>
     <div class="dropdown-menu">
             <a class="dropdown-item" href="home-salesman1.php">Početna stranica</a>
-            <a class="dropdown-item" href="salesman-profile.php">Pogledaj Profil</a>
+            <a class="dropdown-item" href="salesman-profile1.php">Pogledaj Profil</a>
             <a class="dropdown-item" href="edit-profile-salesman.php">Izmeni Profil</a>
             <a class="dropdown-item" href="salesman-products.php">Moji proizvodi</a>
             <a class="dropdown-item" href="salesman-send.php">Čeka se za slanje</a>
