@@ -163,8 +163,12 @@ h5 {
     transform: translate(-50%, 0);
 }
 
-.search-button:hover, .search-button1:hover, .search-button2:hover {
+.search-button:hover, .search-button2:hover {
     background-color: #34a8e7;
+}
+
+.search-button1:hover{
+    background-color: rgba(255, 0, 0, 0.658);
 }
 
 .popup {
