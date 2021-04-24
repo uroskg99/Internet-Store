@@ -9,7 +9,7 @@ $result = mysqli_query($conn, $sql);
 
 
 if($result > 0){
-    header("Location: home-admin.php?success=Deleted");
+    header("Location: home-admin1.php?success=Deleted");
     exit(); 
 }
 else{

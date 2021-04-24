@@ -14,8 +14,10 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="home-admin.css">
+    <link rel="stylesheet" href="home-salesman1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
 </head>
+
 
 <body>
 
@@ -33,7 +35,7 @@ while($row = mysqli_fetch_assoc($res)){
 ?>
 <div class="row row-column">
     <div class="col-md-12 column">
-        <a href="home-customer.php">
+        <a href="home-admin1.php">
             <img src="website-pics/logo.png" class="logo">
         </a>
     <div class="right-div">
@@ -42,9 +44,10 @@ while($row = mysqli_fetch_assoc($res)){
         <img src="profile-pics/<?php echo $profilepic; ?>" width="45px" height="45px" class="mini-profile">
     </a>
     <div class="dropdown-menu">
-        <a class="dropdown-item" href="profile.php">Pogledaj Profil</a>
-        <a class="dropdown-item" href="edit-profile.php">Izmeni Profil</a>
-        <a class="dropdown-item" href="logout.php">Odjavi se</a>
+             <a class="dropdown-item" href="home-admin1.php">Početna stranica</a>
+             <a class="dropdown-item" href="admin-profile.php">Pogledaj Profil</a>
+             <a class="dropdown-item" href="edit-profile-admin.php">Izmeni Profil</a>
+             <a class="dropdown-item" href="logout.php">Odjavi se</a>
     </div>
 </div>
               
@@ -67,27 +70,27 @@ while($row = mysqli_fetch_assoc($res)){
 
 
 <div class="container formSignUp"><br>
-<h3>Dodavanje korisnika</h3><br>
+<h3>Ovde možete dodati korisnika</h3><br>
 <form action="add-user.php" method="POST" enctype="multipart/form-data">
        <div class="form-group">
           <label for="user_name">Ime</label>
           <input type="text" class="form-control" placeholder="Unesi ime korisnika:" name="user_name" required>
-       </div>
+       </div><br>
 
         <div class="form-group">
             <label for="user_surname">Prezime</label>
             <input type="text" class="form-control" placeholder="Unesi prezime korisnika:" name="user_surname" required>
-        </div>
+        </div><br>
 
         <div class="form-group">
             <label for="username">Korisničko ime</label>
             <input type="text" class="form-control" placeholder="Unesi korisničko ime:" name="username" required>
-        </div>
+        </div><br>
 
         <div class="form-group">
             <label for="email">Email</label>
             <input type="text" class="form-control" placeholder="Unesi e-mail adresu:" name="email" required>
-        </div>
+        </div><br>
 
         <div class="form-group">
             <label for="password1">Lozinka</label>
@@ -97,12 +100,12 @@ while($row = mysqli_fetch_assoc($res)){
         <div class="form-group">
             <label for="password2">Ponovi lozinku</label>
             <input type="text" class="form-control" placeholder="Ponovi lozinku:" name="password2" required>
-        </div>
+        </div><br>
 
         <div class="form-group">
             <label for="picture">Profilna fotografija</label><br>
             <input type="file" name="picture">
-        </div>
+        </div><br>
 
         <label for="role">Korisnik je</label>
         <div class="form-group">
@@ -134,7 +137,7 @@ if(isset($_POST['add_user'])) {
     $password2 = validate($_POST['password2']);
     $role = validate($_POST['role']);
     $picture = $_FILES['picture']['name'];
-    $target = "user-pics/".basename($picture);
+    $target = "profile-pics/".basename($picture);
     
     if(!move_uploaded_file($_FILES['picture']['tmp_name'], $target)){
         echo "ERROR";
@@ -180,7 +183,7 @@ if(isset($_POST['add_user'])) {
     if($allowed){
         $qry_insert = "INSERT INTO users (name,surname,username,email,password,role,profilepic) VALUES ('$user_name', '$user_surname', '$username', '$email', '$password1', '$role', '$picture')";
         mysqli_query($conn, $qry_insert);
-        header("location:home-admin.php");
+        header("location:home-admin1.php");
     }
 
 }

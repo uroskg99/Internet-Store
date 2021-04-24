@@ -12,7 +12,8 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="home-admin.css">
+    <link rel="stylesheet" href="home-salesman1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>  
@@ -30,7 +31,7 @@ while($row = mysqli_fetch_assoc($res)){
 ?>
 <div class="row row-column">
     <div class="col-md-12 column">
-        <a href="home-customer.php">
+        <a href="home-admin1.php">
             <img src="website-pics/logo.png" class="logo">
         </a>
     <div class="right-div">
@@ -39,8 +40,9 @@ while($row = mysqli_fetch_assoc($res)){
         <img src="profile-pics/<?php echo $profilepic; ?>" width="45px" height="45px" class="mini-profile">
     </a>
     <div class="dropdown-menu">
-        <a class="dropdown-item" href="profile.php">Pogledaj Profil</a>
-        <a class="dropdown-item" href="edit-profile.php">Izmeni Profil</a>
+        <a class="dropdown-item" href="home-admin1.php">Početna stranica</a>
+        <a class="dropdown-item" href="admin-profile.php">Pogledaj Profil</a>
+        <a class="dropdown-item" href="edit-profile-admin.php">Izmeni Profil</a>
         <a class="dropdown-item" href="logout.php">Odjavi se</a>
     </div>
 </div>
@@ -67,51 +69,51 @@ while($row = mysqli_fetch_assoc($res)){
 <form action="" method="POST" enctype="multipart/form-data">
        <div class="form-group">
           <label for="update_user_name">Ime</label>
-          <input type="text" class="form-control" placeholder="Unesi ime korisnika:" name="update_user_name"><br>
-          <button class="btn btn-dark" type="submit" name="button_update_user_name" onclick='return check()'>Izmeni ime</button><br><br>
+          <input type="text" class="form-control" placeholder="Ažuriraj ime korisnika:" name="update_user_name"><br>
+          <button class="btn" type="submit" name="button_update_user_name" onclick='return check()'>Ažuriraj</button><br><br>
        </div>
 
         <div class="form-group">
             <label for="update_user_surname">Prezime</label>
-            <input type="text" class="form-control" placeholder="Unesi prezime korisnika:" name="update_user_surname"><br>
-            <button class="btn btn-dark" type="submit" name="button_update_user_surname" onclick='return check()'>Izmeni prezime</button><br><br>
+            <input type="text" class="form-control" placeholder="Ažuriraj prezime korisnika:" name="update_user_surname"><br>
+            <button class="btn" type="submit" name="button_update_user_surname" onclick='return check()'>Ažuriraj</button><br><br>
         </div>
 
         <div class="form-group">
             <label for="update_username">Korisničko ime</label>
-            <input type="text" class="form-control" placeholder="Unesi korisničko ime:" name="update_username"><br>
-            <button class="btn btn-dark" type="submit" name="button_update_username" onclick='return check()'>Izmeni korisničko ime</button><br><br>
+            <input type="text" class="form-control" placeholder="Ažuriraj korisničko ime:" name="update_username"><br>
+            <button class="btn" type="submit" name="button_update_username" onclick='return check()'>Ažuriraj</button><br><br>
         </div>
 
         <div class="form-group">
             <label for="update_email">Email</label>
-            <input type="text" class="form-control" placeholder="Unesi e-mail adresu:" name="update_email"><br>
-            <button class="btn btn-dark" type="submit" name="button_update_email" onclick='return check()'>Izmeni email adresu</button><br><br>
+            <input type="text" class="form-control" placeholder="Ažuriraj e-mail adresu:" name="update_email"><br>
+            <button class="btn" type="submit" name="button_update_email" onclick='return check()'>Ažuriraj</button><br><br>
         </div>
 
         <div class="form-group">
             <label for="password1">Lozinka</label>
-            <input type="text" class="form-control" placeholder="Unesi lozinku:" name="password1">
+            <input type="text" class="form-control" placeholder="Ažuriraj lozinku:" name="password1">
         </div>
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Ponovi lozinku:" name="password2"><br>
-            <button class="btn btn-dark" type="submit" name="button_update_password" onclick='return check()'>Izmeni lozinku</button><br><br>
+            <button class="btn" type="submit" name="button_update_password" onclick='return check()'>Ažuriraj</button><br><br>
         </div>
 
         <label for="role">Korisnik je</label>
         <div class="form-group">
            <select name="update_role" class="form-control">
-              <option disabled selected>Izaberi ulogu: </option>
+              <option disabled selected>Ažuriraj ulogu: </option>
               <option>Prodavac</option>
               <option>Kupac</option>
             </select><br>
-            <button class="btn btn-dark" type="submit" name="button_update_role" onclick='return check()'>Izmeni ulogu</button><br><br>
+            <button class="btn" type="submit" name="button_update_role" onclick='return check()'>Ažuriraj</button><br><br>
         </div>
         
         <div class="form-group">
             <label for="picture">Profilna fotografija</label><br>
             <input type="file" name="picture">
-            <button class="btn btn-dark" type="submit" name="button_update_picture" onclick='return check()'>Izmeni profilnu fotografiju</button><br><br><br>
+            <button class="btn" type="submit" name="button_update_picture" onclick='return check()'>Ažuriraj</button><br><br><br>
         </div>
 
 
@@ -254,7 +256,7 @@ if(isset($_POST['button_update_role'])){
 
 if(isset($_POST['button_update_picture'])){
     $picture = $_FILES['picture']['name'];
-    $target = "user-pics/".basename($picture);
+    $target = "profile-pics/".basename($picture);
 
     if(!move_uploaded_file($_FILES['picture']['tmp_name'], $target)){
         $msg = "Neuspešno!";

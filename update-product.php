@@ -122,13 +122,13 @@ while($row = mysqli_fetch_assoc($res)){
            <option>Sport</option>
            <option>TV i Video</option>
         </select><br>
-        <button class="btn btn-dark" type="submit" name="button_update_type">Ažuriraj</button><br><br>
+        <button class="btn" type="submit" name="button_update_type">Ažuriraj</button><br><br>
        </div>
 
        <div class="form-group">
             <label for="update_description">Tekst oglasa</label>
             <textarea type="text" class="form-control" name="update_description" cols="55" rows="5"></textarea><br>
-            <button class="btn btn-dark" type="submit" name="button_update_description">Ažuriraj</button><br><br>
+            <button class="btn" type="submit" name="button_update_description">Ažuriraj</button><br><br>
         </div>
 
         <label for="price">Cena</label>
@@ -143,13 +143,13 @@ while($row = mysqli_fetch_assoc($res)){
               <option>din</option>
             </select>
            </div>
-           <button class="btn btn-dark" type="submit" name="button_update_price">Ažuriraj</button><br><br>
+           <button class="btn" type="submit" name="button_update_price">Ažuriraj</button><br><br>
         </div>
 
         <div class="form-group">
             <label for="quantity">Količina</label>
             <input type="text" class="form-control" value=<?php echo $quantity;?> name="update_quantity"><br>
-            <button class="btn btn-dark" type="submit" name="button_update_quantity">Ažuriraj</button><br><br><br>
+            <button class="btn" type="submit" name="button_update_quantity">Ažuriraj</button><br><br><br>
         </div>
     </form>
 </div>

@@ -47,7 +47,7 @@ if(isset($_SESSION['role'])){
                     $_SESSION['role'] = $role;
 
                     if($role == "admin"){
-                        header("location:home-admin.php");
+                        header("location:home-admin1.php");
                     }else if($role == "customer"){
                         header("location:home-customer.php");
                     }else{

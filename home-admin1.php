@@ -23,7 +23,8 @@ if(isset($_SESSION['role'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="home-admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home-customer.css">
 </head>
 <body>
 
@@ -41,7 +42,7 @@ while($row = mysqli_fetch_assoc($res)){
 ?>
 <div class="row row-column">
     <div class="col-md-12 column">
-        <a href="home-customer.php">
+        <a href="home-admin1.php">
             <img src="website-pics/logo.png" class="logo">
         </a>
     <div class="right-div">
@@ -50,8 +51,9 @@ while($row = mysqli_fetch_assoc($res)){
         <img src="profile-pics/<?php echo $profilepic; ?>" width="45px" height="45px" class="mini-profile">
     </a>
     <div class="dropdown-menu">
-        <a class="dropdown-item" href="profile.php">Pogledaj Profil</a>
-        <a class="dropdown-item" href="edit-profile.php">Izmeni Profil</a>
+        <a class="dropdown-item" href="home-admin1.php">Početna stranica</a>
+        <a class="dropdown-item" href="admin-profile.php">Pogledaj Profil</a>
+        <a class="dropdown-item" href="edit-profile-admin.php">Izmeni Profil</a>
         <a class="dropdown-item" href="logout.php">Odjavi se</a>
     </div>
 </div>
@@ -79,37 +81,51 @@ while($row = mysqli_fetch_assoc($res)){
     </a>
 </div>
 
-<?php
-    $r = "Admin";
-    $sql = "SELECT * FROM users WHERE role!='admin'";
-    $result = mysqli_query($conn, $sql);
-    $resultCheck = mysqli_num_rows($result);
-    if($resultCheck > 0){
-    while($row = mysqli_fetch_assoc($result)){    
-        if($row['role']=='customer'){
-            $r = 'Kupac';
-        }
-        else if($row['role']=='salesperson'){
-            $r = 'Prodavac';
-        }
-?>
 
-    <div class="container">
-        <div class="content">
-        <br>
-            <div class="name">
-            <?php echo "<a href='profile-user.php?username=".$row['username']."'class='name'>"; ?>
-            <p class="name"> <?php echo $row['username']; ?></p> <?php echo "</a>"; ?>
-            </div>
-            <?php echo "<a href='delete-user-check.php?username=".$row['username']."'>"; ?>
-            <button class="btn" type="submit">Izbriši</button>
+
+    <?php 
+        $r = "Admin";
+        $product_qry = "SELECT * FROM users WHERE role!='admin'";
+
+        $product_res = mysqli_query($conn, $product_qry);
+        $res = mysqli_num_rows($product_res);
+    ?>
+
+    <?php 
+    
+    if($res == 0){
+        echo "Nema rezultata";
+    }else{
+        while($product_data = mysqli_fetch_assoc($product_res)){
+            if($product_data['role']=='customer'){
+                $r = 'Kupac';
+            }
+            else if($product_data['role']=='salesperson'){
+                $r = 'Prodavac';
+            }
+        ?>
+        <div class="container product">
+                <img src="profile-pics/<?php echo $product_data['profilepic']; ?>" width="" height="100%" class="product-pic">
+                <div class="left"><?php echo "@".$product_data['username']; ?></div>
+                <div class="price">Uloga: <?php echo $product_data['role']; ?></div><br>
+                <p class="right"><?php echo $product_data['name']." ".$product_data['surname']; ?>
+                <p class="right"><?php echo $product_data['email']; ?>
+        </div>
+
+        <div class="buttons">
+            <?php echo "<a href='delete-user-check.php?username=".$product_data['username']."'>"; ?>
+            <button class="search-button1" type="submit">Izbriši</button>
             <?php echo "</a>"; ?>
-            <?php echo "<a href='update-user-check.php?username=".$row['username']."'>"; ?>
-            <button class="btn" type="submit">Izmeni</button>
+            <?php echo "<a href='update-user-check.php?username=".$product_data['username']."'>"; ?>
+            <button class="search-button" type="submit">Izmeni</button><br><br>
             <?php echo "</a>"; ?>
         </div>
-    </div>
 
-<?php
-    }}
-?>
+        <?php
+            
+        }
+    }
+    ?> 
+</div>
+</body>
+</html>
