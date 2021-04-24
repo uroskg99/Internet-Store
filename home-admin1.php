@@ -114,7 +114,7 @@ while($row = mysqli_fetch_assoc($res)){
 
         <div class="buttons">
             <?php echo "<a href='delete-user-check.php?username=".$product_data['username']."'>"; ?>
-            <button class="search-button1" type="submit">Izbriši</button>
+            <button class="search-button1" type="submit" onclick='return check()'>Izbriši</button>
             <?php echo "</a>"; ?>
             <?php echo "<a href='update-user-check.php?username=".$product_data['username']."'>"; ?>
             <button class="search-button" type="submit">Izmeni</button><br><br>
@@ -129,3 +129,9 @@ while($row = mysqli_fetch_assoc($res)){
 </div>
 </body>
 </html>
+
+<script>
+    function check(){
+        return confirm('Da li ste sigurni da želite da izbrišete korisnika iz sistema?');
+    }
+</script>
