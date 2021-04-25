@@ -119,7 +119,7 @@ while($row = mysqli_fetch_assoc($res)){
             <?php echo "<a href='delete-user-check.php?username=".$product_data['username']."'>"; ?>
             <button class="search-button1" type="submit" onclick='return check()'>Izbriši</button>
             <?php echo "</a>"; ?>
-            <?php echo "<a href='update-user-check.php?username=".$product_data['username']."'>"; ?>
+            <?php echo "<a href='update-user-check.php?update=".$product_data['username']."'>"; ?>
             <button class="search-button" type="submit">Izmeni</button><br><br>
             <?php echo "</a>"; ?>
         </div>

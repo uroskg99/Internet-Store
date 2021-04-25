@@ -35,11 +35,14 @@ $username = $_SESSION['username'];
 $qry = "SELECT * FROM users WHERE username='$username' ";
 $res = mysqli_query($conn, $qry);
 
+$update = $_GET['update'];
+
 while($row = mysqli_fetch_assoc($res)){
     $name = $row['name'];
     $surname = $row['surname'];
     $profilepic = $row['profilepic'];
 }
+
 ?>
 <div class="row row-column">
     <div class="col-md-12 column">
@@ -74,41 +77,45 @@ while($row = mysqli_fetch_assoc($res)){
 </div>
 <?php
 }
+
+$qry1 = "SELECT * FROM users WHERE username = '$update' ";
+$res1 = mysqli_query($conn, $qry1);
+$row1 = mysqli_fetch_assoc($res1);
 ?>
 
 <div class="container formSignUp"><br>
-<h3>Ažuriranje korisnika</h3><br>
+<h3>Ažuriranje korisnika <?php echo $update; ?></h3><br>
 <form action="" method="POST" enctype="multipart/form-data">
        <div class="form-group">
           <label for="update_user_name">Ime</label>
-          <input type="text" class="form-control" placeholder="Ažuriraj ime korisnika:" name="update_user_name"><br>
+          <input type="text" class="form-control" value=<?php echo $row1['name']; ?> name="update_user_name"><br>
           <button class="btn" type="submit" name="button_update_user_name" onclick='return check()'>Ažuriraj</button><br><br>
        </div>
 
         <div class="form-group">
             <label for="update_user_surname">Prezime</label>
-            <input type="text" class="form-control" placeholder="Ažuriraj prezime korisnika:" name="update_user_surname"><br>
+            <input type="text" class="form-control" value=<?php echo $row1['surname']; ?> name="update_user_surname"><br>
             <button class="btn" type="submit" name="button_update_user_surname" onclick='return check()'>Ažuriraj</button><br><br>
         </div>
 
         <div class="form-group">
             <label for="update_username">Korisničko ime</label>
-            <input type="text" class="form-control" placeholder="Ažuriraj korisničko ime:" name="update_username"><br>
+            <input type="text" class="form-control" value=<?php echo $row1['username']; ?> name="update_username"><br>
             <button class="btn" type="submit" name="button_update_username" onclick='return check()'>Ažuriraj</button><br><br>
         </div>
 
         <div class="form-group">
             <label for="update_email">Email</label>
-            <input type="text" class="form-control" placeholder="Ažuriraj e-mail adresu:" name="update_email"><br>
+            <input type="text" class="form-control" value=<?php echo $row1['email']; ?> name="update_email"><br>
             <button class="btn" type="submit" name="button_update_email" onclick='return check()'>Ažuriraj</button><br><br>
         </div>
 
         <div class="form-group">
             <label for="password1">Lozinka</label>
-            <input type="text" class="form-control" placeholder="Ažuriraj lozinku:" name="password1">
+            <input type="password" class="form-control" placeholder="Ažuriraj lozinku:" name="password1">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Ponovi lozinku:" name="password2"><br>
+            <input type="password" class="form-control" placeholder="Ponovi lozinku:" name="password2"><br>
             <button class="btn" type="submit" name="button_update_password" onclick='return check()'>Ažuriraj</button><br><br>
         </div>
 
@@ -124,6 +131,7 @@ while($row = mysqli_fetch_assoc($res)){
         
         <div class="form-group">
             <label for="picture">Profilna fotografija</label><br>
+            <img src="profile-pics/<?php echo $row1['profilepic']; ?>" width="120px" height="120px" class="profile-pic"><br><br>
             <input type="file" name="picture">
             <button class="btn" type="submit" name="button_update_picture" onclick='return check()'>Ažuriraj</button><br><br><br>
         </div>
@@ -131,7 +139,7 @@ while($row = mysqli_fetch_assoc($res)){
 
 <?php
 $msg = '';
-$username = $_GET['username'];
+$username = $_GET['update'];
 $allowed = true;
 
 if(isset($_POST['button_update_user_name'])){
@@ -143,6 +151,7 @@ if(isset($_POST['button_update_user_name'])){
         $msg = "Space ne može biti neka od informacija!";
         $allowed = false;
     }
+    
 
     if($allowed){
         $msg = "Uspešno!";
@@ -240,7 +249,6 @@ if(isset($_POST['button_update_password'])){
     if($allowed){
         $sql = "UPDATE users SET password = '$password1' WHERE username = '$username'";
         $result = mysqli_query($conn, $sql);
-        $msg = "Uspešno!";
     }
 
 }
@@ -292,6 +300,6 @@ if(isset($_POST['button_update_picture'])){
 
 <script>
     function check(){
-        return confirm('Da li ste sigurni?');
+        return confirm('Da li ste sigurni da želite da napravite izmene?');
     }
 </script>
