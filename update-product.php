@@ -2,6 +2,18 @@
 include 'config.php';
 session_start();
 
+if(!isset($_SESSION['role'])){
+    header("location:sign.php");
+}
+
+if(isset($_SESSION['role'])){
+    if($_SESSION['role'] == 'customer'){
+        header("location:home-customer.php");
+    }else if($_SESSION['role'] == 'admin'){
+        header("location:home-admin1.php");
+    }
+}
+
 ?>
 
 
@@ -55,10 +67,11 @@ while($row = mysqli_fetch_assoc($res)){
         <img src="profile-pics/<?php echo $profilepic; ?>" width="45px" height="45px" class="mini-profile">
     </a>
     <div class="dropdown-menu">
-    <a class="dropdown-item" href="profile.php">Pogledaj Profil</a>
-        <a class="dropdown-item" href="edit-profile.php">Izmeni Profil</a>
-        <a class="dropdown-item" href="orders.php">Moji proizvodi</a>
-        <a class="dropdown-item" href="orders.php">Čeka se za slanje</a>
+        <a class="dropdown-item" href="home-salesman1.php">Početna stranica</a>
+        <a class="dropdown-item" href="salesman-profile1.php">Pogledaj Profil</a>
+        <a class="dropdown-item" href="edit-profile-salesman.php">Izmeni Profil</a>
+        <a class="dropdown-item" href="salesman-products.php">Moji proizvodi</a>
+        <a class="dropdown-item" href="salesman-send.php">Čeka se za slanje</a>
         <a class="dropdown-item" href="logout.php">Odjavi se</a>
     </div>
 </div>
