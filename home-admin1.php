@@ -3,11 +3,15 @@
 include 'config.php';
 session_start();
 
+if(!isset($_SESSION['role'])){
+    header("location:sign.php");
+}
+
 if(isset($_SESSION['role'])){
-    if($_SESSION['role'] == 'salesperson'){
-        header("location:home-salesman.php");
-    }else if($_SESSION['role'] == 'customer'){
+    if($_SESSION['role'] == 'customer'){
         header("location:home-customer.php");
+    }else if($_SESSION['role'] == 'salesperson'){
+        header("location:home-salesman1.php");
     }
 }
 
