@@ -46,7 +46,7 @@ while($row = mysqli_fetch_assoc($res)){
 ?>
 <div class="row row-column">
     <div class="col-md-12 column">
-        <a href="salesman-send.php">
+        <a href="home-salesman1.php">
             <img src="website-pics/logo.png" class="logo">
         </a>
     <div class="right-div">
