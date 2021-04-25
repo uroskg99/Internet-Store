@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2021 at 11:06 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- Generation Time: Apr 26, 2021 at 01:10 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -47,7 +47,14 @@ INSERT INTO `products_gallery` (`id`, `product`, `picture`) VALUES
 (7, 'Hummel dres za rukomet', 'hummel-dres.jpg'),
 (8, 'Elektricni trotinet', 'elek-trotinet.jpg'),
 (11, 'Mercedes G Klasa', 'slika1.jpg'),
-(12, 'Mercedes G Klasa', 'slika2.jpg');
+(12, 'Mercedes G Klasa', 'slika2.jpg'),
+(15, 'Muzicka enciklopedija', 'me0.jpg'),
+(16, 'Muzicka enciklopedija', 'me1.jpg'),
+(17, 'Michael Kors MK5996 Kinley Original Zenski Sat', 'sat.jpg'),
+(18, '2001 Volkswagen Golf 4 1.4', 'auto1.jpg'),
+(19, 'Med', 'med.jpg'),
+(20, 'Na prodaju muzjak Srpskog goni?a', 'pas.gif'),
+(21, 'Tunika', 'tunika.jpg');
 
 --
 -- Indexes for dumped tables
@@ -67,7 +74,7 @@ ALTER TABLE `products_gallery`
 -- AUTO_INCREMENT for table `products_gallery`
 --
 ALTER TABLE `products_gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

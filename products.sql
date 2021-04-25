@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2021 at 11:07 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- Generation Time: Apr 26, 2021 at 01:11 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -55,7 +55,13 @@ INSERT INTO `products` (`id`, `name`, `location`, `type`, `description`, `price`
 (5, 'Televizor TESLA full hd', 'Backa Palanka', 'TV i Video', 'Kao nov, neostecen televizor od 30 inca.', 140, 'din', '1', '', 'akiveliki', '', 'yes', 'yes'),
 (6, 'Hummel dres za rukomet', 'Cacak', 'Sport', 'Nenosen dres jer je preveliki, velicina XL.', 1500, 'din', '1', 'Po uzeÄ‡u', 'akiveliki', 'Å¾arko', '', ''),
 (7, 'Elektricni trotinet', 'Beograd', 'Elektronika', 'Vrlo mocan elektricni trotinet, jedan od najjacih po snazi. Brzina do 30km/h. Baterija traje do 3h', 400, 'din', '1', 'Online', 'akiveliki', '', 'yes', 'yes'),
-(9, 'Mercedes G Klasa', 'Beograd', 'Automobili', 'Nova G klasa. Tamno sive boje, povoljna cena, 2019. godiste, presao 1000km.', 12000000, 'din', '1', 'Po uzeÄ‡u', 'akiveliki', '', 'yes', 'yes');
+(9, 'Mercedes G Klasa', 'Beograd', 'Automobili', 'Nova G klasa. Tamno sive boje, povoljna cena, 2019. godiste, presao 1000km.', 12000000, 'din', '1', 'Po uzeÄ‡u', 'akiveliki', '', 'yes', 'yes'),
+(11, 'Muzicka enciklopedija', 'Jagodina', 'Knjige', 'MUZI?KA ENCIKLOPEDIJA \r\n1. A-J \r\n2. K-Ž \r\nIzdanje: JUGOSLOVENSKOG LEKSIKOGRAFSKOG ZAVODA \r\nZAGREB 1963. \r\nStanje: Odli?no! ?uvane u providnom, zaštitnom omotu (videti slike).', 3500, 'din', '1', '', 'akiveliki', '', '', ''),
+(12, 'Michael Kors MK5996 Kinley Original Zenski Sat', 'Beograd', 'Nakit, satovi', 'Sat je nov, original i dolazi u kompletnom, original pakovanju.  \r\nSvaki vid provere originalnosti sata je moguc. \r\n\r\nGarancija na mehanizam godinu dana. \r\n\r\nKod sata: MK5996', 18000, 'din', '1', '', 'ljiljamatic99', '', '', ''),
+(13, '2001 Volkswagen Golf 4 1.4', 'Kraljevo', 'Automobili', 'Automobil je u odlicnom stanju, odrzavan, sa manjim ostecenjima. Registrovan do avgusta. Stavljen novi auspuh i promenjeni diskovi i plocice, novi amortizeri i solje. Servisna knjizica, prava kilometr', 240000, 'din', '1', '', 'ljiljamatic99', '', '', ''),
+(14, 'Med', 'Novi Sad', 'Domaća hrana', 'Livadski med, kombinacija glog, bagrem, lipa, livada, dakle jedno vrcanje. Sa 620 metara nadmorske visine. Nema zaga?iva?a u okolini, potpuno prirodno. Još 70 kg u ponudi. \r\nDostava u Nišu po dogovoru', 800, 'din', '1', '', 'ljiljamatic99', '', '', ''),
+(15, 'Na prodaju muzjak Srpskog goni?a', 'Petrovac na Mlavi', 'Kućni ljubimci', 'Ker star 2 godine iz Makedonije goni sitnu divljac pario vise kuja daje dobre stence.', 42000, 'din', '1', '', 'nina11', '', '', ''),
+(16, 'Tunika', 'Negotin', 'Odeća', 'Prodajem tuniku koja se može koristiti i kao tunika za plažu. Odgovara i lepo stoji svim velicinama.  ', 500, 'din', '1', 'Po uze?u', 'nina11', '', 'yes', 'yes');
 
 --
 -- Indexes for dumped tables
@@ -75,7 +81,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

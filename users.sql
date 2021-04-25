@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2021 at 11:06 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- Generation Time: Apr 26, 2021 at 01:12 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,9 +45,10 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `surname`, `username`, `email`, `password`, `role`, `profilepic`) VALUES
 (1, 'Uros', 'Stanojkov', 'uros99', 'stanojkovu@gmail.com', '123456', 'admin', 'blank-profile-pic.png'),
 (2, 'Aleksandar', 'Vucic', 'akiveliki', 'akiveliki@serbia.net', 'vucicuseceru', 'salesperson', 'blank-profile-pic.png'),
-(3, 'Nemanja', 'Bogdanovic', 'nciric99', 'nciric44222@gmail.com', 'dubravka', 'customer', 'prof.png'),
+(3, 'Nemanja', 'Bogdanovic', 'nciric99', 'nciric44222@gmail.com', 'dubravka', 'customer', 'man2.jpg'),
 (4, 'Jorgan', 'Hendikepovic', 'jorganxd', 'jorgan99@gmail.com', 'macka123', 'customer', 'Profilna.jpg'),
-(5, 'uros', 'stanojkov', 'Å¾arko', 'staki@gmail.com', 'staki123', 'customer', 'Profilna.jpg');
+(6, 'Ljiljana', 'Matic', 'ljiljamatic99', 'ljiljamatic99@gmail.com', 'ljiljanamatic1', 'salesperson', 'woman.jpg'),
+(7, 'Nina', 'Jankovic', 'nina11', 'nina@gmail.com', '1234567', 'salesperson', 'woman2.jpg');
 
 --
 -- Indexes for dumped tables
@@ -67,7 +68,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
