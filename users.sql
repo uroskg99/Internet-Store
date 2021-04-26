@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2021 at 01:12 AM
+-- Generation Time: Apr 26, 2021 at 10:29 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -44,7 +44,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `surname`, `username`, `email`, `password`, `role`, `profilepic`) VALUES
 (1, 'Uros', 'Stanojkov', 'uros99', 'stanojkovu@gmail.com', '123456', 'admin', 'blank-profile-pic.png'),
-(2, 'Aleksandar', 'Vucic', 'akiveliki', 'akiveliki@serbia.net', 'vucicuseceru', 'salesperson', 'blank-profile-pic.png'),
+(2, 'Aleksandar', 'Vucic', 'akiveliki', 'akiveliki@serbia.net', 'vucicuseceru', 'salesperson', 'man.jpg'),
 (3, 'Nemanja', 'Bogdanovic', 'nciric99', 'nciric44222@gmail.com', 'dubravka', 'customer', 'man2.jpg'),
 (4, 'Jorgan', 'Hendikepovic', 'jorganxd', 'jorgan99@gmail.com', 'macka123', 'customer', 'Profilna.jpg'),
 (6, 'Ljiljana', 'Matic', 'ljiljamatic99', 'ljiljamatic99@gmail.com', 'ljiljanamatic1', 'salesperson', 'woman.jpg'),

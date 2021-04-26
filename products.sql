@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2021 at 10:22 AM
+-- Generation Time: Apr 26, 2021 at 10:28 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -61,7 +61,8 @@ INSERT INTO `products` (`id`, `name`, `location`, `type`, `description`, `price`
 (13, '2001 Volkswagen Golf 4 1.4', 'Kraljevo', 'Automobili', 'Automobil je u odlicnom stanju, odrzavan, sa manjim ostecenjima. Registrovan do avgusta. Stavljen novi auspuh i promenjeni diskovi i plocice, novi amortizeri i solje. Servisna knjizica, prava kilometr', 240000, 'din', '1', '', 'ljiljamatic99', '', '', ''),
 (14, 'Med', 'Novi Sad', 'Domaća hrana', 'Livadski med, kombinacija glog, bagrem, lipa, livada, dakle jedno vrcanje. Sa 620 metara nadmorske visine. Nema zaga?iva?a u okolini, potpuno prirodno. Još 70 kg u ponudi. \r\nDostava u Nišu po dogovoru', 800, 'din', '1', '', 'ljiljamatic99', '', '', ''),
 (16, 'Tunika', 'Negotin', 'Odeća', 'Prodajem tuniku koja se može koristiti i kao tunika za plažu. Odgovara i lepo stoji svim velicinama.  ', 500, 'din', '1', 'Po uze?u', 'nina11', '', 'yes', 'yes'),
-(17, 'Majica', 'Kikinda', 'Odeća', 'Ocuvana, velicina XS', 200, 'din', '1', '', 'akiveliki', '', '', '');
+(17, 'Majica', 'Kikinda', 'Odeća', 'Ocuvana, velicina XS', 200, 'din', '1', '', 'akiveliki', '', '', ''),
+(18, 'Tiny Lands', 'Nis', 'Konzole i igrice', 'Original i nova igrica! Proveren kvalitet.', 1000, 'din', '1', '', 'ljiljamatic99', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -81,7 +82,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
